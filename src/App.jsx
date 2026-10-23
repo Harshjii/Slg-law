@@ -62,7 +62,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fcfbf9] text-[#141413] flex flex-col font-sans selection:bg-[#8c7853] selection:text-white">
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#FDFCF9] text-[#0B1B3D] flex flex-col font-sans selection:bg-[#C5A059] selection:text-white">
       {/* Statutory BCI Entry Modal */}
       <BciModal 
         isOpen={bciOpen} 
@@ -104,7 +104,7 @@ export default function App() {
       />
 
       {/* Main Content Sections */}
-      <main className="max-w-7xl mx-auto px-4 md:px-12 py-8 sm:py-16 md:py-20 space-y-20 sm:space-y-28 md:space-y-36 flex-grow">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-6 sm:py-12 md:py-20 space-y-14 sm:space-y-24 md:space-y-36 flex-grow">
         {/* Hero Headline */}
         <Hero 
           onScrollTo={handleScrollTo} 

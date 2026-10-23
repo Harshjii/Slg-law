@@ -50,24 +50,24 @@ export default function QueryModal({ isOpen, onClose, onSubmitted }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 sm:p-6 overflow-y-auto animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-3 sm:p-6 overflow-y-auto animate-fadeIn"
       role="dialog"
       aria-modal="true"
     >
-      <div className="bg-[#fcfbf9] border border-legal-border max-w-2xl w-full p-6 sm:p-10 shadow-2xl relative my-8">
+      <div className="bg-[#fcfbf9] border border-legal-border max-w-2xl w-full p-5 sm:p-10 shadow-2xl relative my-auto max-h-[92vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex justify-between items-start pb-4 border-b border-legal-border">
+        <div className="flex justify-between items-start pb-3 sm:pb-4 border-b border-legal-border">
           <div>
             <div className="flex items-center space-x-2">
               <span className="w-2 h-2 rounded-full bg-legal-accent animate-pulse"></span>
-              <span className="mono-tag text-xs text-legal-accent font-bold uppercase tracking-wider">
+              <span className="mono-tag text-[10px] sm:text-xs text-legal-accent font-bold uppercase tracking-wider">
                 REGISTRY HELPDESK // BRIEF ASSESSMENT
               </span>
             </div>
-            <h3 className="serif-title text-2xl sm:text-3xl font-bold text-legal-dark mt-1">
+            <h3 className="serif-title text-xl sm:text-3xl font-bold text-legal-dark mt-1">
               Matter Query & Preliminary Brief Intake
             </h3>
-            <p className="text-xs text-zinc-500 font-sans mt-0.5">
+            <p className="text-[11px] sm:text-xs text-zinc-500 font-sans mt-0.5">
               Preliminary assessment under Advocates Act, 1961 guidelines.
             </p>
           </div>

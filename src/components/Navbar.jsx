@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowRight, Shield } from 'lucide-react';
+import { Menu, X, ArrowRight, Shield, Phone, MessageSquare, ExternalLink } from 'lucide-react';
+import { FIRM_DETAILS } from '../data/legalData';
 
 const CHAPTERS = [
   { id: "practice", label: "CH. 1 PRACTICE", full: "CH. 1 THE PRACTICE" },
@@ -18,30 +19,34 @@ export default function Navbar({ onOpenQuery, onOpenBci }) {
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Offset for sticky navbar
+      const yOffset = -70;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
   return (
     <header className="sticky top-0 z-40 bg-[#FDFCF9]/95 backdrop-blur-md border-b border-legal-border transition-all">
-      <div className="max-w-7xl mx-auto px-4 md:px-12 py-3 flex justify-between items-center gap-4">
+      {/* Main Bar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-2.5 sm:py-3 flex justify-between items-center gap-3">
         
         {/* Brand Official Logo & Title */}
         <a 
           href="#" 
-          className="flex items-center space-x-3.5 group focus:outline-none"
+          className="flex items-center space-x-2.5 sm:space-x-3.5 group focus:outline-none min-w-0"
           aria-label="Statewide Litigation Group Home"
         >
           <img 
             src="/logo.png" 
             alt="Statewide Litigation Group Logo" 
-            className="h-11 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+            className="h-9 sm:h-11 md:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02] shrink-0"
           />
-          <div className="hidden sm:block">
-            <h1 className="serif-title text-xl font-bold tracking-tight text-legal-dark leading-none">
+          <div className="min-w-0">
+            <h1 className="serif-title text-base sm:text-xl font-bold tracking-tight text-legal-dark leading-tight truncate">
               Statewide Litigation Group
             </h1>
-            <p className="mono-tag text-[9px] sm:text-[10px] text-legal-accent mt-1 tracking-wider font-semibold">
+            <p className="mono-tag text-[8px] sm:text-[10px] text-legal-accent tracking-wider font-semibold truncate">
               CHAMBERS & ADVOCATES // ESTD. 1983
             </p>
           </div>
@@ -61,8 +66,8 @@ export default function Navbar({ onOpenQuery, onOpenBci }) {
           ))}
         </nav>
 
-        {/* Desktop & Tablet CTA */}
-        <div className="hidden sm:flex items-center space-x-3">
+        {/* Desktop CTA */}
+        <div className="hidden sm:flex items-center space-x-3 shrink-0">
           <button
             type="button"
             onClick={onOpenQuery}
@@ -73,34 +78,34 @@ export default function Navbar({ onOpenQuery, onOpenBci }) {
           </button>
         </div>
 
-        {/* Mobile Hamburger Button & Quick CTA */}
-        <div className="flex items-center space-x-2 sm:hidden">
+        {/* Mobile Right Controls */}
+        <div className="flex items-center space-x-2 sm:hidden shrink-0">
           <button
             type="button"
             onClick={onOpenQuery}
-            className="bg-legal-dark text-white mono-tag text-[10px] px-2.5 py-1.5 border border-legal-accent font-semibold"
+            className="bg-legal-dark text-white mono-tag text-[11px] px-3 py-1.5 border border-legal-accent font-semibold active:scale-95"
           >
             QUERY
           </button>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 border border-legal-border bg-legal-cardBg text-legal-dark hover:bg-legal-border transition-colors cursor-pointer"
+            className="p-2 border border-legal-border bg-legal-cardBg text-legal-dark hover:bg-legal-border active:scale-95 transition-colors cursor-pointer"
             aria-label="Toggle mobile menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5 text-legal-dark" /> : <Menu className="w-5 h-5 text-legal-dark" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
       
-      {/* Horizontal Sub-Bar for Quick Chapter Navigation on Tablets & Mobile */}
-      <div className="xl:hidden bg-legal-cardBg border-t border-legal-border px-4 py-2 flex overflow-x-auto space-x-4 mono-tag text-[10px] whitespace-nowrap scrollbar-none">
+      {/* Horizontal Sub-Bar for Quick Chapter Jump on Mobile / Tablet (Lightweight and compact) */}
+      <div className="xl:hidden bg-legal-cardBg/90 border-t border-legal-border px-3 py-1.5 flex overflow-x-auto space-x-3 mono-tag text-[9px] sm:text-[10px] whitespace-nowrap scrollbar-none">
         {CHAPTERS.map(chap => (
           <button
             key={chap.id}
             type="button"
             onClick={() => handleNavClick(chap.id)}
-            className="hover:text-legal-dark text-slate-700 transition-colors py-0.5 cursor-pointer font-medium"
+            className="hover:text-legal-dark text-slate-700 transition-colors py-1 px-2 hover:bg-white rounded-xs cursor-pointer font-medium"
           >
             {chap.label}
           </button>
@@ -109,51 +114,63 @@ export default function Navbar({ onOpenQuery, onOpenBci }) {
 
       {/* Full Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="sm:hidden bg-[#FDFCF9] border-b border-legal-border px-6 py-6 space-y-5 animate-fadeIn shadow-xl">
-          <div className="flex items-center space-x-3 pb-2 border-b border-legal-border">
-            <img src="/logo.png" alt="SLG" className="h-8 w-auto object-contain" />
-            <span className="mono-tag text-[11px] text-legal-accent font-semibold">
-              CHAMBERS CHAPTER NAVIGATION
+        <div className="sm:hidden fixed inset-x-0 top-[88px] bottom-0 bg-[#FDFCF9] z-50 overflow-y-auto px-5 py-6 space-y-5 animate-fadeIn shadow-2xl border-t border-legal-border">
+          <div className="flex items-center justify-between pb-3 border-b border-legal-border">
+            <div className="flex items-center space-x-2.5">
+              <img src="/logo.png" alt="SLG" className="h-8 w-auto object-contain" />
+              <span className="mono-tag text-xs text-legal-accent font-bold">
+                CHAMBERS DIRECTORY
+              </span>
+            </div>
+            <span className="mono-tag text-[10px] bg-gold-100 text-legal-dark px-2 py-0.5 border border-legal-accent/40 font-semibold">
+              ESTD. 1983
             </span>
           </div>
 
-          <div className="grid grid-cols-1 gap-2.5 mono-tag text-xs">
+          {/* Chapters Links */}
+          <div className="space-y-1.5 mono-tag text-xs">
             {CHAPTERS.map(chap => (
               <button
                 key={chap.id}
                 type="button"
                 onClick={() => handleNavClick(chap.id)}
-                className="text-left py-2 px-3 bg-legal-cardBg border border-legal-border hover:border-legal-accent text-legal-dark flex justify-between items-center"
+                className="w-full text-left py-3 px-3.5 bg-legal-cardBg border border-legal-border hover:border-legal-accent text-legal-dark flex justify-between items-center active:bg-gold-100/50"
               >
-                <span>{chap.full}</span>
-                <span className="text-legal-accent">→</span>
+                <span className="font-medium">{chap.full}</span>
+                <span className="text-legal-accent font-bold">→</span>
               </button>
             ))}
           </div>
 
-          <div className="pt-2 border-t border-legal-border space-y-2">
+          {/* Quick Action CTAs */}
+          <div className="pt-3 border-t border-legal-border space-y-2.5">
             <button
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenQuery();
               }}
-              className="w-full bg-legal-dark text-white mono-tag text-xs font-semibold py-3 flex items-center justify-center space-x-2 border border-legal-accent"
+              className="w-full bg-legal-dark text-white mono-tag text-xs font-semibold py-3.5 flex items-center justify-center space-x-2 border border-legal-accent active:scale-98 shadow-sm"
             >
-              <span>OPEN QUERY HELPLINE</span>
+              <span>DISPATCH BRIEF TO REGISTRY</span>
               <ArrowRight className="w-4 h-4 text-legal-accent" />
             </button>
+            
             <button
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenBci();
               }}
-              className="w-full bg-legal-cardBg text-legal-dark mono-tag text-xs py-2.5 border border-legal-border flex items-center justify-center space-x-2"
+              className="w-full bg-legal-cardBg text-legal-dark mono-tag text-xs py-3 border border-legal-border flex items-center justify-center space-x-2 active:bg-zinc-100"
             >
-              <Shield className="w-3.5 h-3.5 text-legal-accent" />
-              <span>VIEW BCI RULE 36 DISCLAIMER</span>
+              <Shield className="w-4 h-4 text-legal-accent" />
+              <span>STATUTORY BCI RULE 36 DISCLAIMER</span>
             </button>
+          </div>
+
+          <div className="pt-4 text-center mono-tag text-[10px] text-zinc-500">
+            Advocates Act, 1961 • Supreme Court & Pan-India Benches
           </div>
         </div>
       )}

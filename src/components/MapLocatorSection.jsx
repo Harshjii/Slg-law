@@ -35,26 +35,35 @@ export default function MapLocatorSection({ onOpenQuery, onShowNotice }) {
         </p>
       </div>
 
-      {/* Mobile/Tablet Pill Selector for Easy Touch */}
-      <div className="flex lg:hidden overflow-x-auto space-x-2 pb-2 scrollbar-none">
-        {Object.keys(JURISDICTION_NODES).map(key => {
-          const node = JURISDICTION_NODES[key];
-          const isSelected = selectedKey === key;
-          return (
-            <button
-              key={key}
-              type="button"
-              onClick={() => handleSelect(key)}
-              className={`mono-tag text-[11px] px-3.5 py-2 border whitespace-nowrap transition-all cursor-pointer ${
-                isSelected
-                  ? 'bg-legal-dark text-cream-50 border-legal-accent font-semibold shadow-sm'
-                  : 'bg-legal-cardBg text-zinc-700 border-legal-border hover:border-legal-accent'
-              }`}
-            >
-              {node.name}
-            </button>
-          );
-        })}
+      {/* Mobile/Tablet Location Grid Selector for Easy Touch */}
+      <div className="lg:hidden space-y-2">
+        <div className="flex justify-between items-center text-[10px] mono-tag text-zinc-500">
+          <span className="font-semibold text-legal-accent">SELECT COURT COORDINATE:</span>
+          <span>Tap to load benches</span>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          {Object.keys(JURISDICTION_NODES).map(key => {
+            const node = JURISDICTION_NODES[key];
+            const isSelected = selectedKey === key;
+            return (
+              <button
+                key={key}
+                type="button"
+                onClick={() => handleSelect(key)}
+                className={`mono-tag text-[10px] sm:text-[11px] p-2.5 border text-left transition-all cursor-pointer active:scale-98 ${
+                  isSelected
+                    ? 'bg-legal-dark text-white border-legal-accent font-semibold shadow-xs ring-1 ring-legal-accent'
+                    : 'bg-legal-cardBg text-zinc-700 border-legal-border hover:border-legal-accent'
+                }`}
+              >
+                <div className="flex items-center space-x-1.5 truncate">
+                  <span className={`w-2 h-2 rounded-full shrink-0 ${isSelected ? 'bg-legal-accent animate-pulse' : 'bg-zinc-400'}`}></span>
+                  <span className="truncate font-medium">{node.name}</span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Main Grid: SVG Map on Left, Detailed Dynamic Dossier on Right */}
