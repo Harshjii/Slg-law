@@ -5,18 +5,13 @@ export default function BenchSection() {
   return (
     <section id="bench" className="space-y-8 sm:space-y-12 pt-10 border-t border-legal-border scroll-mt-28">
       {/* Chapter Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <span className="mono-tag text-xs text-legal-accent tracking-widest uppercase font-semibold">
-            ADVOCACY ARCHITECTURE // PAN-INDIA BENCH
-          </span>
-          <h3 className="serif-title text-3xl sm:text-4xl md:text-5xl font-normal mt-2 leading-tight">
-            Advocacy Architecture
-          </h3>
-        </div>
-        <div className="mono-tag text-[11px] sm:text-xs text-zinc-500">
-          DELHI NCR • KANPUR • SUPREME COURT OF INDIA
-        </div>
+      <div>
+        <span className="mono-tag text-xs text-legal-accent tracking-widest uppercase font-semibold">
+          ADVOCACY ARCHITECTURE // PAN-INDIA BENCH
+        </span>
+        <h3 className="serif-title text-3xl sm:text-4xl md:text-5xl font-normal mt-2 leading-tight">
+          Advocacy Architecture
+        </h3>
       </div>
 
       {/* Metrics Grid */}

@@ -49,7 +49,7 @@ export const BENCH_METRICS = [
   {
     num: "02",
     tag: "10+ ADVOCATES CORPS",
-    title: "Delhi NCR & Pan-India",
+    title: "Pan-India",
     description: "Coordinated bench strength across Delhi, Gurgaon, Noida, Faridabad, and Bulandshahr with correspondent counsel nationwide across 25 High Courts."
   },
   {
