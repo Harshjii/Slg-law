@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
-import { X, Send, Scale, PhoneCall, Mail, CheckCircle, ShieldCheck } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Send, Scale, PhoneCall, Mail, CheckCircle, ShieldCheck, Loader2 } from 'lucide-react';
 import { FIRM_DETAILS } from '../data/legalData';
+import { sendLegalQuery, ADVOCATE_EMAIL } from '../services/mailService';
 
-export default function QueryModal({ isOpen, onClose, onSubmitted }) {
+export default function QueryModal({ isOpen, onClose, onSubmitted, initialService = '' }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     role: 'Litigant',
     forum: 'Supreme Court of India',
+    service: '',
     summary: '',
     acknowledged: false
   });
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [refNumber, setRefNumber] = useState('');
+
+  useEffect(() => {
+    if (initialService) {
+      setFormData(prev => ({ ...prev, service: initialService }));
+    }
+  }, [initialService]);
 
   if (!isOpen) return null;
 
@@ -24,14 +34,29 @@ export default function QueryModal({ isOpen, onClose, onSubmitted }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.acknowledged) {
       alert("Please check the statutory acknowledgment checkbox before submitting.");
       return;
     }
-    // Simulate submission
+
+    setIsSubmitting(true);
+    const result = await sendLegalQuery({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      service: formData.service || formData.forum || "General Legal Inquiry",
+      forum: formData.forum,
+      summary: `[Role: ${formData.role}] ${formData.summary}`
+    });
+
+    setRefNumber(result.referenceId);
+    setIsSubmitting(false);
     setIsSuccess(true);
+    if (onSubmitted) {
+      onSubmitted(result.referenceId);
+    }
   };
 
   const handleReset = () => {
@@ -88,24 +113,28 @@ export default function QueryModal({ isOpen, onClose, onSubmitted }) {
             </div>
             <div className="space-y-2">
               <h4 className="serif-title text-3xl font-bold text-legal-dark">
-                Brief Logged with Chambers Registry
+                Brief Dispatched to Chambers
               </h4>
               <p className="text-xs sm:text-sm text-zinc-600 max-w-md mx-auto font-sans leading-relaxed">
-                Your preliminary intake information has been received. Our partner secretariat will review the statutory merit and coordinate next steps.
+                Your preliminary intake information has been received and routed directly to <span className="font-semibold text-legal-dark underline">{ADVOCATE_EMAIL}</span>. Our partner secretariat will review the statutory merit and reach out promptly.
               </p>
             </div>
             <div className="bg-legal-cardBg border border-legal-border p-4 max-w-md mx-auto text-left text-xs mono-tag space-y-1.5">
               <div className="flex justify-between text-zinc-600">
                 <span>INTAKE REFERENCE:</span>
-                <span className="font-bold text-legal-dark">SLG-2026-{Math.floor(1000 + Math.random() * 9000)}</span>
+                <span className="font-bold text-legal-dark">{refNumber || 'SLG-2026-REGISTRY'}</span>
+              </div>
+              <div className="flex justify-between text-zinc-600">
+                <span>RECIPIENT CHAMBERS:</span>
+                <span className="font-semibold text-legal-accent">{ADVOCATE_EMAIL}</span>
               </div>
               <div className="flex justify-between text-zinc-600">
                 <span>BENCH DESIGNATED:</span>
-                <span className="font-semibold text-legal-accent">{formData.forum}</span>
+                <span className="font-semibold text-legal-dark">{formData.service || formData.forum}</span>
               </div>
               <div className="flex justify-between text-zinc-600">
                 <span>STATUS:</span>
-                <span className="text-emerald-700 font-semibold">PRELIMINARY REVIEW</span>
+                <span className="text-emerald-700 font-semibold">TRANSMITTED TO ADVOCATE DESK</span>
               </div>
             </div>
             <div className="pt-4">
@@ -253,15 +282,24 @@ export default function QueryModal({ isOpen, onClose, onSubmitted }) {
                 </button>
                 <button
                   type="submit"
-                  disabled={!formData.acknowledged}
+                  disabled={!formData.acknowledged || isSubmitting}
                   className={`w-1/2 sm:w-auto px-6 py-2.5 mono-tag text-xs font-semibold flex items-center justify-center space-x-2 border transition-all cursor-pointer ${
-                    formData.acknowledged
+                    formData.acknowledged && !isSubmitting
                       ? 'bg-legal-dark text-cream-50 border-legal-accent hover:bg-zinc-800'
                       : 'bg-zinc-200 text-zinc-400 border-zinc-300 cursor-not-allowed'
                   }`}
                 >
-                  <span>SUBMIT INTAKE</span>
-                  <Send className="w-3.5 h-3.5 text-legal-accent" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin text-legal-accent" />
+                      <span>DISPATCHING...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>SUBMIT INTAKE</span>
+                      <Send className="w-3.5 h-3.5 text-legal-accent" />
+                    </>
+                  )}
                 </button>
               </div>
             </div>

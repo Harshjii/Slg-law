@@ -6,8 +6,8 @@ export const FIRM_DETAILS = {
   established: 1983,
   udyamReg: "UP-20-0098412",
   phone: "+91 98110 00000",
-  email: "registry@statewidelitigation.com",
-  helpline: "Registry Helpdesk (New Delhi & Kanpur)",
+  email: "advocate@statewidelitigation.com",
+  helpline: "advocate@statewidelitigation.com",
   addressDelhi: "Chambers, Supreme Court of India & Delhi High Court Bar, New Delhi, India",
   addressKanpur: "Principal Civil Chambers, District & Sessions Court Complex, Kanpur, Uttar Pradesh, India"
 };
@@ -258,3 +258,87 @@ export const FAQ_ITEMS = [
     answer: "Yes, the chambers maintain an active filing roster for urgent mentioning before the Supreme Court Vacation/Regular benches and High Courts for caveat lodgement, ad-interim ex-parte stays, and statutory bail applications."
   }
 ];
+
+export const LEGAL_SERVICES = [
+  {
+    id: "litigation",
+    num: "01",
+    title: "Litigation & Dispute Resolution",
+    image: "/services/01-litigation.jpg",
+    description: "Civil and commercial litigation, criminal litigation, writ petitions, appeals, arbitration, mediation, tribunal proceedings and enforcement of judgments.",
+    practiceAreas: ["Civil & Commercial Litigation", "Criminal Litigation", "Writ Petitions & Appeals", "Arbitration & Mediation", "Tribunal Proceedings", "Judgment Enforcement"]
+  },
+  {
+    id: "corporate",
+    num: "02",
+    title: "Corporate & Commercial Law",
+    image: "/services/02-corporate.jpg",
+    description: "Company structuring, commercial contracts, mergers and acquisitions, joint ventures, shareholder disputes, corporate governance and due diligence.",
+    practiceAreas: ["Company Structuring", "Commercial Contracts", "M&A / Joint Ventures", "Shareholder Disputes", "Corporate Governance", "Due Diligence"]
+  },
+  {
+    id: "banking",
+    num: "03",
+    title: "Banking, Finance & Insolvency",
+    image: "/services/03-banking.jpg",
+    description: "Banking disputes, debt recovery, loan documentation, SARFAESI matters, insolvency and bankruptcy proceedings, restructuring and creditor representation.",
+    practiceAreas: ["Banking Disputes", "Debt Recovery & DRT", "SARFAESI Proceedings", "Insolvency & Bankruptcy (IBC)", "Debt Restructuring", "Creditor Representation"]
+  },
+  {
+    id: "realestate",
+    num: "04",
+    title: "Real Estate & Infrastructure",
+    image: "/services/04-realestate.jpg",
+    description: "Property disputes, title verification, land acquisition, leases, construction contracts, RERA matters, infrastructure projects and project-related arbitration.",
+    practiceAreas: ["Property & Title Disputes", "Title Verification", "Land Acquisition", "Commercial Leases", "RERA Matters", "Infrastructure Arbitration"]
+  },
+  {
+    id: "regulatory",
+    num: "05",
+    title: "Regulatory, Compliance & Investigations",
+    image: "/services/05-compliance.jpg",
+    description: "Regulatory advisory, statutory compliance, government notices, corporate investigations, anti-bribery matters, economic offences and white-collar crime proceedings.",
+    practiceAreas: ["Regulatory Advisory", "Statutory Compliance", "Government Notices", "Corporate Investigations", "Economic Offences", "White-Collar Crime Defense"]
+  },
+  {
+    id: "iptech",
+    num: "06",
+    title: "Intellectual Property, Technology & Data Protection",
+    image: "/services/06-iptech.jpg",
+    description: "Trademark and copyright protection, patent-related legal services, licensing, technology contracts, cybersecurity incidents, privacy and data protection advisory.",
+    practiceAreas: ["Trademark & Copyright Protection", "Patent-Related Advisory", "Technology Contracts", "Cybersecurity Incidents", "Privacy & Data Protection", "IP Licensing"]
+  },
+  {
+    id: "international",
+    num: "07",
+    title: "International & Cross-Border Legal Services",
+    image: "/services/07-international.jpg",
+    description: "Cross-border commercial transactions, international arbitration, foreign investment advisory, jurisdictional disputes and coordination with overseas counsel.",
+    practiceAreas: ["Cross-Border Commercial Transactions", "International Commercial Arbitration", "Foreign Investment Advisory", "Jurisdictional Disputes", "Overseas Counsel Coordination"]
+  },
+  {
+    id: "employment",
+    num: "08",
+    title: "Employment & Labour Law",
+    image: "/services/08-employment.jpg",
+    description: "Employment contracts, labour compliance, workplace investigations, POSH advisory, termination disputes, employee claims and industrial relations.",
+    practiceAreas: ["Employment Contracts", "Labour Statutory Compliance", "Workplace Investigations", "POSH Advisory", "Termination Disputes", "Industrial Relations"]
+  },
+  {
+    id: "family",
+    num: "09",
+    title: "Family, Succession & Private Client",
+    image: "/services/09-family.jpg",
+    description: "Matrimonial disputes, divorce, child custody, inheritance, wills, trusts, estate planning, succession and family settlements.",
+    practiceAreas: ["Matrimonial & Divorce Disputes", "Child Custody", "Inheritance & Succession", "Wills, Trusts & Probate", "Estate Planning", "Family Settlements"]
+  },
+  {
+    id: "tax",
+    num: "10",
+    title: "Insurance, Tax & Consumer Law",
+    image: "/services/10-tax.jpg",
+    description: "Insurance coverage and claim disputes, insurance recovery, direct and indirect tax litigation, GST disputes, consumer complaints and product liability.",
+    practiceAreas: ["Insurance Coverage & Claims", "Insurance Recovery Litigation", "Direct & Indirect Tax Litigation", "GST Disputes", "Consumer Commission Claims", "Product Liability"]
+  }
+];
+

@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowRight, Shield, Phone, MessageSquare, ExternalLink } from 'lucide-react';
+import { Menu, X, ArrowRight, Shield } from 'lucide-react';
 import { FIRM_DETAILS } from '../data/legalData';
 
 const CHAPTERS = [
-  { id: "practice", label: "CH. 1 PRACTICE", full: "CH. 1 THE PRACTICE" },
+  { id: "services", label: "CH. 1 SERVICES", full: "CH. 1 PRACTICE SERVICES" },
   { id: "leadership", label: "CH. 2 LEADERSHIP", full: "CH. 2 LEADERSHIP" },
   { id: "bench", label: "CH. 3 BENCH", full: "CH. 3 BENCH" },
-  { id: "locator", label: "CH. 4 MAP", full: "CH. 4 MAP LOCATOR" },
-  { id: "expertise", label: "CH. 5 EXPERTISE", full: "CH. 5 EXPERTISE" },
-  { id: "ventures", label: "CH. 6 VENTURES", full: "CH. 6 VENTURES" },
-  { id: "questions", label: "CH. 7 QUESTIONS", full: "CH. 7 QUESTIONS" }
+  { id: "practice", label: "CH. 4 PRACTICE", full: "CH. 4 THE PRACTICE" },
+  { id: "ventures", label: "CH. 5 VENTURES", full: "CH. 5 VENTURES" },
+  { id: "questions", label: "CH. 6 QUESTIONS", full: "CH. 6 QUESTIONS" }
 ];
 
 export default function Navbar({ onOpenQuery, onOpenBci }) {
@@ -52,20 +51,6 @@ export default function Navbar({ onOpenQuery, onOpenBci }) {
           </div>
         </a>
 
-        {/* Desktop Chapter Navigation Links */}
-        <nav className="hidden xl:flex items-center space-x-5 mono-tag text-[11px] text-slate-700 font-medium">
-          {CHAPTERS.map(chap => (
-            <button
-              key={chap.id}
-              type="button"
-              onClick={() => handleNavClick(chap.id)}
-              className="hover:text-legal-dark transition-colors py-1 border-b-2 border-transparent hover:border-legal-accent cursor-pointer"
-            >
-              {chap.full}
-            </button>
-          ))}
-        </nav>
-
         {/* Desktop CTA */}
         <div className="hidden sm:flex items-center space-x-3 shrink-0">
           <button
@@ -96,20 +81,6 @@ export default function Navbar({ onOpenQuery, onOpenBci }) {
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
-      </div>
-      
-      {/* Horizontal Sub-Bar for Quick Chapter Jump on Mobile / Tablet (Lightweight and compact) */}
-      <div className="xl:hidden bg-legal-cardBg/90 border-t border-legal-border px-3 py-1.5 flex overflow-x-auto space-x-3 mono-tag text-[9px] sm:text-[10px] whitespace-nowrap scrollbar-none">
-        {CHAPTERS.map(chap => (
-          <button
-            key={chap.id}
-            type="button"
-            onClick={() => handleNavClick(chap.id)}
-            className="hover:text-legal-dark text-slate-700 transition-colors py-1 px-2 hover:bg-white rounded-xs cursor-pointer font-medium"
-          >
-            {chap.label}
-          </button>
-        ))}
       </div>
 
       {/* Full Mobile Drawer Overlay */}

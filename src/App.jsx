@@ -5,8 +5,7 @@ import Hero from './components/Hero';
 import PracticeSection from './components/PracticeSection';
 import LeadershipSection from './components/LeadershipSection';
 import BenchSection from './components/BenchSection';
-import MapLocatorSection from './components/MapLocatorSection';
-import ExpertiseSection from './components/ExpertiseSection';
+import ServicesSection from './components/ServicesSection';
 import VenturesSection from './components/VenturesSection';
 import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
@@ -73,10 +72,10 @@ export default function App() {
       <QueryModal 
         isOpen={queryOpen} 
         onClose={() => setQueryOpen(false)} 
-        onSubmitted={() => {
+        onSubmitted={(ref) => {
           showNotice(
-            "Brief Registered with SLG Secretariat",
-            "Your preliminary case query has been logged. Our advocates will evaluate statutory merits.",
+            "Brief Dispatched to Chambers Desk",
+            `Your preliminary case query has been forwarded to advocate@statewidelitigation.com (Ref: ${ref || 'SLG-2026'}). Our advocates will evaluate statutory merits.`,
             "success"
           );
         }}
@@ -111,9 +110,10 @@ export default function App() {
           onOpenQuery={() => setQueryOpen(true)} 
         />
 
-        {/* Ch. 1: The Practice */}
-        <PracticeSection 
-          onShowNotice={showNotice} 
+        {/* Ch. 1: Services & Direct Inquiry */}
+        <ServicesSection 
+          onOpenQuery={() => setQueryOpen(true)} 
+          onShowNotice={showNotice}
         />
 
         {/* Ch. 2: Leadership */}
@@ -124,23 +124,17 @@ export default function App() {
         {/* Ch. 3: Bench & Heritage */}
         <BenchSection />
 
-        {/* Ch. 4: Map Locator */}
-        <MapLocatorSection 
-          onOpenQuery={() => setQueryOpen(true)} 
-          onShowNotice={showNotice}
+        {/* Ch. 4: The Practice */}
+        <PracticeSection 
+          onShowNotice={showNotice} 
         />
 
-        {/* Ch. 5: Expertise */}
-        <ExpertiseSection 
-          onOpenQuery={() => setQueryOpen(true)} 
-        />
-
-        {/* Ch. 6: Ventures & Alliances */}
+        {/* Ch. 5: Ventures & Alliances */}
         <VenturesSection 
           onShowNotice={showNotice} 
         />
 
-        {/* Ch. 7: Questions (FAQ) */}
+        {/* Ch. 6: Questions (FAQ) */}
         <FaqSection 
           onOpenQuery={() => setQueryOpen(true)} 
         />

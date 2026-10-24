@@ -17,7 +17,7 @@ export default function FaqSection({ onOpenQuery }) {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <span className="mono-tag text-xs text-legal-accent tracking-widest uppercase font-semibold">
-            CH. 7 // QUESTIONS
+            CH. 6 // QUESTIONS
           </span>
           <h3 className="serif-title text-3xl sm:text-4xl md:text-5xl font-normal mt-2 leading-tight">
             Asked Before
