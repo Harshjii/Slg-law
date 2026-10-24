@@ -1,93 +1,85 @@
 import React from 'react';
-import { ExternalLink, Award, MapPin, Scale, BookOpen } from 'lucide-react';
-import { PARTNERS } from '../data/legalData';
+import { Quote, ShieldCheck, Scale, Award } from 'lucide-react';
+import { FIRM_DETAILS } from '../data/legalData';
 
-export default function LeadershipSection({ onShowNotice }) {
-  const handleDossierClick = (partner) => {
-    onShowNotice(
-      `${partner.name} // Chambers Dossier`,
-      `Designation: ${partner.designation}. Practicing Seat: ${partner.seat}. Area of Mastery: ${partner.subRole}. Verified through High Court & Supreme Court bar registrations.`
-    );
-  };
-
+export default function LeadershipSection() {
   return (
-    <section id="leadership" className="space-y-8 sm:space-y-12 pt-10 border-t border-legal-border scroll-mt-28">
-      {/* Chapter Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <span className="mono-tag text-xs text-legal-accent tracking-widest uppercase font-semibold">
-            LEADERSHIP // CHAMBERS PARTNERS
-          </span>
-          <h3 className="serif-title text-3xl sm:text-4xl md:text-5xl font-normal mt-2 leading-tight">
-            Partners in Chambers
-          </h3>
+    <section id="leadership" className="space-y-8 pt-10 border-t border-legal-border scroll-mt-28">
+      {/* Editorial Container */}
+      <div className="bg-legal-cardBg border border-legal-border p-6 sm:p-12 md:p-16 relative shadow-xs overflow-hidden">
+        
+        {/* Subtle Watermark Scale in corner */}
+        <div className="absolute right-6 sm:right-12 bottom-6 sm:bottom-10 opacity-5 pointer-events-none select-none text-legal-dark">
+          <Scale className="w-48 sm:w-64 h-48 sm:h-64" />
         </div>
-        <p className="text-xs sm:text-sm text-zinc-600 max-w-md font-sans leading-relaxed">
-          Chambers directed exclusively by two seasoned partners uniting 40+ years of trial court mastery with Supreme Court & High Court writ strategy.
-        </p>
-      </div>
 
-      {/* Partners Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-        {PARTNERS.map(partner => (
-          <div
-            key={partner.id}
-            className="bg-white border border-legal-border p-6 sm:p-10 flex flex-col justify-between space-y-6 sm:space-y-8 shadow-sm hover:border-legal-accent/60 transition-all relative group"
-          >
-            <div className="space-y-4">
-              {/* Partner Badges */}
-              <div className="flex flex-wrap justify-between items-center gap-2">
-                <span className="mono-tag text-[10px] bg-legal-cardBg border border-legal-border px-3 py-1 font-semibold text-zinc-800">
-                  {partner.role}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => handleDossierClick(partner)}
-                  className="mono-tag text-xs text-legal-accent hover:underline flex items-center space-x-1 cursor-pointer transition-colors"
-                >
-                  <span>Chambers Dossier</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </button>
-              </div>
+        <div className="max-w-4xl space-y-6 sm:space-y-8 relative z-10">
+          
+          {/* Top Tag & Decorative Icon */}
+          <div className="flex items-center space-x-3">
+            <span className="mono-tag text-xs text-legal-accent tracking-widest uppercase font-semibold">
+              LEADERSHIP DIRECTIVE // MANAGING DIRECTOR'S ADDRESS
+            </span>
+            <span className="h-px w-12 bg-legal-border"></span>
+          </div>
 
-              {/* Names & Designations */}
-              <div>
-                <h4 className="serif-title text-2xl sm:text-3xl font-bold tracking-tight text-legal-dark">
-                  {partner.name}
-                </h4>
-                <p className="mono-tag text-xs text-legal-accent mt-1 tracking-wider uppercase font-semibold">
-                  {partner.subRole}
-                </p>
-                <div className="flex items-center space-x-1.5 text-[11px] text-zinc-500 font-sans mt-1">
-                  <MapPin className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-                  <span>{partner.seat}</span>
-                </div>
-              </div>
+          {/* Section Main Title */}
+          <div className="space-y-2">
+            <div className="flex items-center space-x-3">
+              <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-legal-accent/60 -scale-x-100 shrink-0" />
+              <h3 className="serif-title text-3xl sm:text-4xl md:text-5xl font-normal text-legal-dark leading-tight">
+                Note from the Managing Director
+              </h3>
+            </div>
+          </div>
 
-              {/* Bio */}
-              <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-sans pt-1">
-                {partner.bio}
+          {/* Note Body Paragraphs */}
+          <div className="space-y-5 text-sm sm:text-base text-zinc-700 leading-relaxed font-sans border-l-2 border-legal-accent/40 pl-4 sm:pl-6 my-6">
+            <p className="font-medium text-legal-dark">
+              At Statewide Litigation Group (SLG), I believe that exceptional legal representation begins with trust, integrity, and a genuine commitment to our clients.
+            </p>
+
+            <p>
+              Our vision is to build a law firm that combines the strength of courtroom experience with strategic thinking and a modern, forward-looking approach to dispute resolution. From civil and revenue matters to complex commercial litigation, appellate advocacy, and company law disputes, we strive to approach every challenge with diligence, clarity, and purpose.
+            </p>
+
+            <p>
+              As we grow, our commitment remains simple: to uphold the rule of law, stand firmly by our professional values, and deliver legal counsel that inspires confidence.
+            </p>
+
+            <p>
+              For us, success is not just about winning cases—it is about building lasting relationships, earning trust, and making a meaningful difference.
+            </p>
+
+            <p className="italic font-serif text-base sm:text-lg text-legal-dark pt-1">
+              Thank you for placing your confidence in SLG.
+            </p>
+          </div>
+
+          {/* Sign-off & Chambers Credentials */}
+          <div className="pt-6 border-t border-legal-border flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <p className="mono-tag text-[10px] sm:text-[11px] text-zinc-500 uppercase tracking-wider">
+                CHAMBERS PRINCIPAL LEADERSHIP
+              </p>
+              <h4 className="serif-title text-xl sm:text-2xl font-bold text-legal-dark mt-1">
+                Sudesh Kumar Singh
+              </h4>
+              <p className="mono-tag text-xs text-legal-accent font-semibold tracking-wide mt-0.5">
+                Managing Partner & Director // Statewide Litigation Group
+              </p>
+              <p className="text-xs text-zinc-500 font-sans mt-0.5">
+                Supreme Court of India & High Court of Delhi Bar
               </p>
             </div>
 
-            {/* Tags */}
-            <div className="pt-5 border-t border-legal-border space-y-3">
-              <span className="mono-tag text-[10px] text-zinc-400 uppercase tracking-wider block font-semibold">
-                CORE LITIGATION CAPACITIES:
-              </span>
-              <div className="flex flex-wrap gap-2 mono-tag text-[10px]">
-                {partner.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="bg-legal-cardBg border border-legal-border px-2.5 py-1 text-zinc-700"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            <div className="flex items-center space-x-2 mono-tag text-[10px] text-zinc-600 bg-white border border-legal-border px-3 py-2 rounded-xs shadow-2xs self-start sm:self-end">
+              <ShieldCheck className="w-4 h-4 text-legal-accent shrink-0" />
+              <span>ESTD. 1983 • {FIRM_DETAILS.udyamReg}</span>
             </div>
           </div>
-        ))}
+
+        </div>
       </div>
     </section>
   );
