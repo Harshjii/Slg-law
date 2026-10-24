@@ -1,5 +1,4 @@
 import React from 'react';
-import { ExternalLink, CheckCircle2 } from 'lucide-react';
 import { VENTURES } from '../data/legalData';
 
 export default function VenturesSection({ onShowNotice }) {
@@ -63,17 +62,6 @@ export default function VenturesSection({ onShowNotice }) {
                 <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-sans">
                   {venture.description}
                 </p>
-              </div>
-
-              <div className="pt-4 border-t border-legal-border">
-                <span className="mono-tag text-xs text-legal-accent font-semibold group-hover:underline flex items-center space-x-1.5">
-                  <span>{venture.linkText}</span>
-                  {isExternal ? (
-                    <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  ) : (
-                    <span>↗</span>
-                  )}
-                </span>
               </div>
             </Component>
           );
