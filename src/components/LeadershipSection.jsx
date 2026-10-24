@@ -1,8 +1,7 @@
 import React from 'react';
-import { Quote, ShieldCheck, Scale, Award } from 'lucide-react';
-import { FIRM_DETAILS } from '../data/legalData';
+import { Quote, Scale, MessageSquareText, ArrowRight } from 'lucide-react';
 
-export default function LeadershipSection() {
+export default function LeadershipSection({ onOpenQuery }) {
   return (
     <section id="leadership" className="space-y-8 pt-10 border-t border-legal-border scroll-mt-28">
       {/* Editorial Container */}
@@ -56,29 +55,21 @@ export default function LeadershipSection() {
             </p>
           </div>
 
-          {/* Sign-off & Chambers Credentials */}
-          <div className="pt-6 border-t border-legal-border flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <p className="mono-tag text-[10px] sm:text-[11px] text-zinc-500 uppercase tracking-wider">
-                CHAMBERS PRINCIPAL LEADERSHIP
-              </p>
-              <h4 className="serif-title text-xl sm:text-2xl font-bold text-legal-dark mt-1">
-                Sudesh Kumar Singh
-              </h4>
-              <p className="mono-tag text-xs text-legal-accent font-semibold tracking-wide mt-0.5">
-                Managing Partner & Director // Statewide Litigation Group
-              </p>
-              <p className="text-xs text-zinc-500 font-sans mt-0.5">
-                Supreme Court of India & High Court of Delhi Bar
-              </p>
-            </div>
-
-            <div className="flex items-center space-x-2 mono-tag text-[10px] text-zinc-600 bg-white border border-legal-border px-3 py-2 rounded-xs shadow-2xs self-start sm:self-end">
-              <ShieldCheck className="w-4 h-4 text-legal-accent shrink-0" />
-              <span>ESTD. 1983 • {FIRM_DETAILS.udyamReg}</span>
-            </div>
+          {/* Submit Query Action Link */}
+          <div className="pt-6 border-t border-legal-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <p className="text-xs sm:text-sm text-zinc-600 font-sans">
+              Have a legal matter or dispute requiring strategic counsel?
+            </p>
+            <button
+              type="button"
+              onClick={onOpenQuery}
+              className="inline-flex items-center space-x-2 bg-legal-dark hover:bg-zinc-800 text-cream-50 font-semibold mono-tag text-xs py-2.5 px-5 border border-legal-accent/80 transition-all cursor-pointer group active:scale-95 shadow-xs w-fit shrink-0"
+            >
+              <MessageSquareText className="w-3.5 h-3.5 text-legal-accent" />
+              <span>SUBMIT YOUR QUERY</span>
+              <ArrowRight className="w-3.5 h-3.5 text-legal-accent transition-transform group-hover:translate-x-1" />
+            </button>
           </div>
-
         </div>
       </div>
     </section>

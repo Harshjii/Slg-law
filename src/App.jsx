@@ -128,6 +128,7 @@ export default function App() {
 
         {/* Leadership */}
         <LeadershipSection 
+          onOpenQuery={() => handleOpenQuery('')}
           onShowNotice={showNotice} 
         />
 
