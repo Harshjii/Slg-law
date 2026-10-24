@@ -120,31 +120,31 @@ export default function App() {
           onOpenQuery={() => handleOpenQuery('')} 
         />
 
-        {/* Ch. 1: Services & Direct Inquiry */}
+        {/* Services & Direct Inquiry */}
         <ServicesSection 
           onOpenQuery={handleOpenQuery} 
           onShowNotice={showNotice}
         />
 
-        {/* Ch. 2: Leadership */}
+        {/* Leadership */}
         <LeadershipSection 
           onShowNotice={showNotice} 
         />
 
-        {/* Ch. 3: Bench & Heritage */}
+        {/* Bench & Heritage */}
         <BenchSection />
 
-        {/* Ch. 4: The Practice */}
+        {/* The Practice */}
         <PracticeSection 
           onShowNotice={showNotice} 
         />
 
-        {/* Ch. 5: Ventures & Alliances */}
+        {/* Ventures & Alliances */}
         <VenturesSection 
           onShowNotice={showNotice} 
         />
 
-        {/* Ch. 6: Questions (FAQ) */}
+        {/* Questions (FAQ) */}
         <FaqSection 
           onOpenQuery={() => handleOpenQuery('')} 
         />

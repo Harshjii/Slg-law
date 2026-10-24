@@ -77,7 +77,7 @@ export default function ServicesSection({ onOpenQuery, onShowNotice }) {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <span className="mono-tag text-xs text-legal-accent tracking-widest uppercase font-semibold">
-            CH. 1 // PRACTICE VERTICALS
+            PRACTICE VERTICALS // LEGAL SERVICES
           </span>
           <h3 className="serif-title text-3xl sm:text-4xl md:text-5xl font-normal mt-2 leading-tight text-legal-dark">
             Practice Areas & Legal Services

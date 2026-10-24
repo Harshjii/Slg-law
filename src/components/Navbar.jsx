@@ -3,12 +3,12 @@ import { Menu, X, ArrowRight, Shield } from 'lucide-react';
 import { FIRM_DETAILS } from '../data/legalData';
 
 const CHAPTERS = [
-  { id: "services", label: "CH. 1 SERVICES", full: "CH. 1 PRACTICE SERVICES" },
-  { id: "leadership", label: "CH. 2 LEADERSHIP", full: "CH. 2 LEADERSHIP" },
-  { id: "bench", label: "CH. 3 BENCH", full: "CH. 3 BENCH" },
-  { id: "practice", label: "CH. 4 PRACTICE", full: "CH. 4 THE PRACTICE" },
-  { id: "ventures", label: "CH. 5 VENTURES", full: "CH. 5 VENTURES" },
-  { id: "questions", label: "CH. 6 QUESTIONS", full: "CH. 6 QUESTIONS" }
+  { id: "services", label: "SERVICES", full: "PRACTICE SERVICES" },
+  { id: "leadership", label: "LEADERSHIP", full: "LEADERSHIP" },
+  { id: "bench", label: "BENCH", full: "BENCH & HERITAGE" },
+  { id: "practice", label: "THE PRACTICE", full: "THE PRACTICE" },
+  { id: "ventures", label: "VENTURES", full: "ALLIANCES & VENTURES" },
+  { id: "questions", label: "QUESTIONS", full: "FREQUENT QUESTIONS" }
 ];
 
 export default function Navbar({ onOpenQuery, onOpenBci }) {
