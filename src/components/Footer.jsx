@@ -33,10 +33,10 @@ export default function Footer({ onOpenBci, onOpenQuery, onScrollTo, onShowNotic
           </div>
         </div>
 
-        {/* Col 2: Courts & Fora */}
+        {/* Col 2: Courts & Forum */}
         <div className="space-y-3">
           <h6 className="mono-tag font-bold text-legal-dark text-[11px] uppercase tracking-wider">
-            COURTS & FORA
+            COURTS & FORUM
           </h6>
           <ul className="space-y-2 text-xs text-zinc-600 font-sans">
             <li className="text-zinc-600">Supreme Court of India</li>
