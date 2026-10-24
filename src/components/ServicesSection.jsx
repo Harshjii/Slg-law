@@ -1,50 +1,11 @@
-import React, { useState } from 'react';
-import { Send, CheckCircle2, Shield, Loader2, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Shield, MessageSquareText } from 'lucide-react';
 import { LEGAL_SERVICES } from '../data/legalData';
-import { sendLegalQuery, ADVOCATE_EMAIL } from '../services/mailService';
+import { ADVOCATE_EMAIL } from '../services/mailService';
 
-function ServiceCard({ service, onShowNotice }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    note: ''
-  });
-  const [submitting, setSubmitting] = useState(false);
-  const [submittedRef, setSubmittedRef] = useState('');
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.phone) {
-      alert("Please provide your name and contact phone number.");
-      return;
-    }
-
-    setSubmitting(true);
-    const result = await sendLegalQuery({
-      name: formData.name,
-      phone: formData.phone,
-      email: formData.email,
-      service: `${service.num}. ${service.title}`,
-      summary: formData.note || `Inquiry regarding ${service.title}`
-    });
-
-    setSubmitting(false);
-    setSubmittedRef(result.referenceId);
-  };
-
-  const handleReset = () => {
-    setSubmittedRef('');
-    setFormData({ name: '', phone: '', email: '', note: '' });
-  };
-
+function ServiceCard({ service, onOpenQuery }) {
   return (
-    <div className="bg-legal-cardBg border border-legal-border hover:border-legal-accent/70 transition-all rounded-xs overflow-hidden shadow-xs flex flex-col justify-between">
+    <div className="bg-legal-cardBg border border-legal-border hover:border-legal-accent/70 transition-all rounded-xs overflow-hidden shadow-xs flex flex-col justify-between group">
       {/* Top Details Area */}
       <div className="p-5 sm:p-7 space-y-4">
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-start">
@@ -53,7 +14,7 @@ function ServiceCard({ service, onShowNotice }) {
             <img 
               src={service.image} 
               alt={service.title} 
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
           </div>
@@ -87,98 +48,23 @@ function ServiceCard({ service, onShowNotice }) {
         </div>
       </div>
 
-      {/* Dedicated Query Form under Service */}
-      <div className="bg-[#F6F3EC] border-t border-legal-border p-4 sm:p-5 space-y-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-legal-accent animate-pulse"></span>
-            <span className="mono-tag text-[10px] text-legal-accent uppercase font-bold tracking-wider">
-              DIRECT QUERY // {service.title}
-            </span>
-          </div>
-          <span className="mono-tag text-[9px] text-zinc-500 hidden sm:inline-block">
-            Inbox: {ADVOCATE_EMAIL}
-          </span>
+      {/* Action Strip: Direct Query Button to Open Query Modal */}
+      <div className="bg-[#F7F5EE] border-t border-legal-border p-4 sm:px-6 sm:py-3.5 flex items-center justify-between gap-3">
+        <div className="flex items-center space-x-2 text-zinc-500 mono-tag text-[10px]">
+          <span className="w-1.5 h-1.5 rounded-full bg-legal-accent animate-pulse"></span>
+          <span className="hidden sm:inline">Advocate Desk Intake</span>
+          <span className="text-zinc-400 hidden md:inline">• {ADVOCATE_EMAIL}</span>
         </div>
 
-        {submittedRef ? (
-          <div className="bg-emerald-50 border border-emerald-300 p-4 rounded-xs space-y-2 text-center animate-fadeIn">
-            <div className="flex items-center justify-center space-x-2 text-emerald-800 font-semibold text-xs mono-tag">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>Query Successfully Sent to {ADVOCATE_EMAIL}</span>
-            </div>
-            <p className="text-[11px] text-zinc-700 font-sans">
-              Intake registered under reference <span className="font-bold text-legal-dark">{submittedRef}</span>. Our advocates will evaluate statutory merits and reach out promptly.
-            </p>
-            <button
-              type="button"
-              onClick={handleReset}
-              className="text-[10px] mono-tag text-legal-accent font-semibold underline hover:text-legal-dark pt-1 cursor-pointer"
-            >
-              Submit Another Inquiry
-            </button>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-2.5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder="Full Name *"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full bg-white border border-legal-border focus:border-legal-accent px-3 py-2 text-xs text-legal-dark placeholder-zinc-400 rounded-xs focus:outline-none font-sans transition-colors"
-              />
-              <input
-                type="tel"
-                name="phone"
-                required
-                placeholder="Phone Number / WhatsApp *"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full bg-white border border-legal-border focus:border-legal-accent px-3 py-2 text-xs text-legal-dark placeholder-zinc-400 rounded-xs focus:outline-none font-sans transition-colors"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address (optional)"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full bg-white border border-legal-border focus:border-legal-accent px-3 py-2 text-xs text-legal-dark placeholder-zinc-400 rounded-xs focus:outline-none font-sans transition-colors"
-              />
-              <input
-                type="text"
-                name="note"
-                placeholder="Brief Matter / Case Context"
-                value={formData.note}
-                onChange={handleChange}
-                className="w-full bg-white border border-legal-border focus:border-legal-accent px-3 py-2 text-xs text-legal-dark placeholder-zinc-400 rounded-xs focus:outline-none font-sans transition-colors"
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={submitting}
-              className="w-full bg-legal-dark hover:bg-zinc-800 text-cream-50 font-semibold mono-tag text-xs py-2.5 px-4 rounded-xs border border-legal-accent/80 transition-all flex items-center justify-center space-x-2 active:scale-98 cursor-pointer disabled:opacity-60 shadow-xs"
-            >
-              {submitting ? (
-                <>
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-legal-accent" />
-                  <span>TRANSMITTING TO {ADVOCATE_EMAIL}...</span>
-                </>
-              ) : (
-                <>
-                  <span>SUBMIT QUERY FOR {service.title.toUpperCase()}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-legal-accent" />
-                </>
-              )}
-            </button>
-          </form>
-        )}
+        <button
+          type="button"
+          onClick={() => onOpenQuery(`${service.num}. ${service.title}`)}
+          className="inline-flex items-center space-x-2 bg-legal-dark hover:bg-zinc-800 text-cream-50 font-semibold mono-tag text-xs py-2 px-4 border border-legal-accent/80 transition-all cursor-pointer group active:scale-95 shadow-xs"
+        >
+          <MessageSquareText className="w-3.5 h-3.5 text-legal-accent" />
+          <span>SUBMIT QUERY FORM</span>
+          <ArrowRight className="w-3.5 h-3.5 text-legal-accent transition-transform group-hover:translate-x-1" />
+        </button>
       </div>
     </div>
   );
@@ -202,13 +88,13 @@ export default function ServicesSection({ onOpenQuery, onShowNotice }) {
         </p>
       </div>
 
-      {/* Services Grid (10 Services with dedicated inquiry form under each) */}
+      {/* Services Grid (10 Services with dedicated inquiry button on each) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         {LEGAL_SERVICES.map(service => (
           <ServiceCard 
             key={service.id} 
             service={service} 
-            onShowNotice={onShowNotice} 
+            onOpenQuery={onOpenQuery} 
           />
         ))}
       </div>
@@ -221,10 +107,10 @@ export default function ServicesSection({ onOpenQuery, onShowNotice }) {
         </div>
         <button
           type="button"
-          onClick={onOpenQuery}
+          onClick={() => onOpenQuery('')}
           className="text-legal-dark hover:text-legal-accent underline font-semibold cursor-pointer shrink-0"
         >
-          Open Comprehensive Brief Intake →
+          Open General Brief Intake Form →
         </button>
       </div>
     </section>

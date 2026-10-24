@@ -16,12 +16,18 @@ import NoticeModal from './components/NoticeModal';
 export default function App() {
   const [bciOpen, setBciOpen] = useState(true);
   const [queryOpen, setQueryOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState('');
   const [notice, setNotice] = useState({
     isOpen: false,
     title: '',
     message: '',
     type: 'info'
   });
+
+  const handleOpenQuery = (service = '') => {
+    setSelectedService(service);
+    setQueryOpen(true);
+  };
 
   // Check if user already acknowledged during current session
   useEffect(() => {
@@ -71,7 +77,11 @@ export default function App() {
       {/* Query Intake Helpline Modal */}
       <QueryModal 
         isOpen={queryOpen} 
-        onClose={() => setQueryOpen(false)} 
+        initialService={selectedService}
+        onClose={() => {
+          setQueryOpen(false);
+          setSelectedService('');
+        }} 
         onSubmitted={(ref) => {
           showNotice(
             "Brief Dispatched to Chambers Desk",
@@ -98,7 +108,7 @@ export default function App() {
 
       {/* Sticky Main Navigation */}
       <Navbar 
-        onOpenQuery={() => setQueryOpen(true)} 
+        onOpenQuery={() => handleOpenQuery('')} 
         onOpenBci={handleOpenBci} 
       />
 
@@ -107,12 +117,12 @@ export default function App() {
         {/* Hero Headline */}
         <Hero 
           onScrollTo={handleScrollTo} 
-          onOpenQuery={() => setQueryOpen(true)} 
+          onOpenQuery={() => handleOpenQuery('')} 
         />
 
         {/* Ch. 1: Services & Direct Inquiry */}
         <ServicesSection 
-          onOpenQuery={() => setQueryOpen(true)} 
+          onOpenQuery={handleOpenQuery} 
           onShowNotice={showNotice}
         />
 
@@ -136,14 +146,14 @@ export default function App() {
 
         {/* Ch. 6: Questions (FAQ) */}
         <FaqSection 
-          onOpenQuery={() => setQueryOpen(true)} 
+          onOpenQuery={() => handleOpenQuery('')} 
         />
       </main>
 
       {/* Footer */}
       <Footer 
         onOpenBci={handleOpenBci}
-        onOpenQuery={() => setQueryOpen(true)}
+        onOpenQuery={() => handleOpenQuery('')} 
         onScrollTo={handleScrollTo}
         onShowNotice={showNotice}
       />

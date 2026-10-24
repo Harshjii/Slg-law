@@ -19,10 +19,13 @@ export default function QueryModal({ isOpen, onClose, onSubmitted, initialServic
   const [refNumber, setRefNumber] = useState('');
 
   useEffect(() => {
-    if (initialService) {
-      setFormData(prev => ({ ...prev, service: initialService }));
+    if (isOpen) {
+      setFormData(prev => ({
+        ...prev,
+        service: initialService || prev.service || ''
+      }));
     }
-  }, [initialService]);
+  }, [isOpen, initialService]);
 
   if (!isOpen) return null;
 
@@ -215,25 +218,51 @@ export default function QueryModal({ isOpen, onClose, onSubmitted, initialServic
               </div>
             </div>
 
-            <div>
-              <label className="block mono-tag text-[11px] font-semibold text-zinc-700 mb-1">
-                FORUM / JURISDICTION OF MATTER *
-              </label>
-              <select
-                name="forum"
-                value={formData.forum}
-                onChange={handleChange}
-                className="w-full bg-white border border-legal-border px-3.5 py-2.5 text-xs text-legal-dark focus:outline-none focus:border-legal-accent transition-colors font-sans cursor-pointer"
-              >
-                <option value="Supreme Court of India">Supreme Court of India (SLP / Article 32)</option>
-                <option value="Delhi High Court">Delhi High Court (Article 226 Writs / Commercial)</option>
-                <option value="Allahabad High Court & Lucknow Bench">Allahabad High Court / Lucknow Bench</option>
-                <option value="NCLT / NCLAT">NCLT Principal Bench / NCLAT (IBC / Company Law)</option>
-                <option value="UP RERA / REAT">UP RERA & Appellate Tribunal (Real Estate)</option>
-                <option value="NCDRC / Consumer Commission">NCDRC (National Consumer Commission)</option>
-                <option value="District & Sessions Courts (Delhi NCR / Kanpur)">District & Sessions Courts (Delhi NCR / Kanpur)</option>
-                <option value="UP Revenue Court / Board">UP Revenue Court / Board of Revenue</option>
-              </select>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block mono-tag text-[11px] font-semibold text-zinc-700 mb-1">
+                  PRACTICE SERVICE VERTICAL
+                </label>
+                <select
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  className="w-full bg-white border border-legal-border px-3.5 py-2.5 text-xs text-legal-dark focus:outline-none focus:border-legal-accent transition-colors font-sans cursor-pointer font-medium"
+                >
+                  <option value="">General Chambers Inquiry</option>
+                  <option value="01. Litigation & Dispute Resolution">01. Litigation & Dispute Resolution</option>
+                  <option value="02. Corporate & Commercial Law">02. Corporate & Commercial Law</option>
+                  <option value="03. Banking, Finance & Insolvency">03. Banking, Finance & Insolvency</option>
+                  <option value="04. Real Estate & Infrastructure">04. Real Estate & Infrastructure</option>
+                  <option value="05. Regulatory, Compliance & Investigations">05. Regulatory, Compliance & Investigations</option>
+                  <option value="06. Intellectual Property, Technology & Data Protection">06. Intellectual Property, Technology & Data Protection</option>
+                  <option value="07. International & Cross-Border Legal Services">07. International & Cross-Border Legal Services</option>
+                  <option value="08. Employment & Labour Law">08. Employment & Labour Law</option>
+                  <option value="09. Family, Succession & Private Client">09. Family, Succession & Private Client</option>
+                  <option value="10. Insurance, Tax & Consumer Law">10. Insurance, Tax & Consumer Law</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block mono-tag text-[11px] font-semibold text-zinc-700 mb-1">
+                  FORUM / JURISDICTION OF MATTER *
+                </label>
+                <select
+                  name="forum"
+                  value={formData.forum}
+                  onChange={handleChange}
+                  className="w-full bg-white border border-legal-border px-3.5 py-2.5 text-xs text-legal-dark focus:outline-none focus:border-legal-accent transition-colors font-sans cursor-pointer"
+                >
+                  <option value="Supreme Court of India">Supreme Court of India (SLP / Article 32)</option>
+                  <option value="Delhi High Court">Delhi High Court (Article 226 Writs / Commercial)</option>
+                  <option value="Allahabad High Court & Lucknow Bench">Allahabad High Court / Lucknow Bench</option>
+                  <option value="NCLT / NCLAT">NCLT Principal Bench / NCLAT (IBC / Company Law)</option>
+                  <option value="UP RERA / REAT">UP RERA & Appellate Tribunal (Real Estate)</option>
+                  <option value="NCDRC / Consumer Commission">NCDRC (National Consumer Commission)</option>
+                  <option value="District & Sessions Courts (Delhi NCR / Kanpur)">District & Sessions Courts (Delhi NCR / Kanpur)</option>
+                  <option value="UP Revenue Court / Board">UP Revenue Court / Board of Revenue</option>
+                </select>
+              </div>
             </div>
 
             <div>
