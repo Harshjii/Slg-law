@@ -21,11 +21,6 @@ function ServiceCard({ service, onOpenQuery }) {
 
           {/* Service Info */}
           <div className="space-y-2 min-w-0 flex-1">
-            <div className="flex items-center space-x-2">
-              <span className="mono-tag text-[10px] text-legal-accent font-bold tracking-wider uppercase px-2 py-0.5 bg-gold-100 border border-legal-accent/40 rounded-xs">
-                PRACTICE {service.num}
-              </span>
-            </div>
             <h4 className="serif-title text-xl sm:text-2xl font-bold text-legal-dark leading-snug">
               {service.num}. {service.title}
             </h4>
