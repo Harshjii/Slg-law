@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { ShieldCheck, Scale, X, ArrowRight, AlertCircle } from 'lucide-react';
+import { lockBodyScroll, unlockBodyScroll } from '../utils/scrollLock';
 
 export default function BciModal({ isOpen, onClose }) {
-  // Prevent background scroll when modal is active
+  // Prevent background scroll when modal is active using fixed-body locking
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      lockBodyScroll();
     } else {
-      document.body.style.overflow = 'unset';
+      unlockBodyScroll();
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      unlockBodyScroll();
     };
   }, [isOpen]);
 

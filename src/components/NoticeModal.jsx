@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, Bell, CheckCircle2, Info } from 'lucide-react';
+import { lockBodyScroll, unlockBodyScroll } from '../utils/scrollLock';
 
 export default function NoticeModal({ isOpen, onClose, title = "SLG Chambers Notification", message, type = "info" }) {
+  useEffect(() => {
+    if (isOpen) {
+      lockBodyScroll();
+    } else {
+      unlockBodyScroll();
+    }
+    return () => {
+      unlockBodyScroll();
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (

@@ -66,7 +66,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-[#FDFCF9] text-[#0B1B3D] flex flex-col font-sans selection:bg-[#C5A059] selection:text-white">
+    <div className="min-h-[100dvh] w-full overflow-x-hidden bg-[#FDFCF9] text-[#0B1B3D] flex flex-col font-sans selection:bg-[#C5A059] selection:text-white">
       {/* Statutory BCI Entry Modal */}
       <BciModal 
         isOpen={bciOpen} 

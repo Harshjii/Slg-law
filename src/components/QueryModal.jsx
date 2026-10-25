@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Send, Scale, PhoneCall, Mail, CheckCircle, ShieldCheck, Loader2 } from 'lucide-react';
 import { FIRM_DETAILS, LEGAL_SERVICES } from '../data/legalData';
 import { sendLegalQuery, ADVOCATE_EMAIL } from '../services/mailService';
+import { lockBodyScroll, unlockBodyScroll } from '../utils/scrollLock';
 
 export default function QueryModal({ isOpen, onClose, onSubmitted, initialService = '' }) {
   const [formData, setFormData] = useState({
@@ -17,6 +18,18 @@ export default function QueryModal({ isOpen, onClose, onSubmitted, initialServic
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [refNumber, setRefNumber] = useState('');
+
+  // Lock background body scroll on mobile/iOS when modal is active
+  useEffect(() => {
+    if (isOpen) {
+      lockBodyScroll();
+    } else {
+      unlockBodyScroll();
+    }
+    return () => {
+      unlockBodyScroll();
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -82,7 +95,7 @@ export default function QueryModal({ isOpen, onClose, onSubmitted, initialServic
       role="dialog"
       aria-modal="true"
     >
-      <div className="bg-[#fcfbf9] border border-legal-border max-w-2xl w-full p-5 sm:p-10 shadow-2xl relative my-auto max-h-[92vh] overflow-y-auto">
+      <div className="bg-[#fcfbf9] border border-legal-border max-w-2xl w-full p-5 sm:p-10 shadow-2xl relative my-auto max-h-[90dvh] overflow-y-auto">
         {/* Header */}
         <div className="flex justify-between items-start pb-3 sm:pb-4 border-b border-legal-border">
           <div>
@@ -214,6 +227,7 @@ export default function QueryModal({ isOpen, onClose, onSubmitted, initialServic
                   <option value="Referring Advocate">Referring Advocate / Counsel</option>
                   <option value="Corporate Representative">Corporate Legal Representative</option>
                   <option value="Civic / NGO Representative">Civic / NGO Partner</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
             </div>
@@ -233,6 +247,7 @@ export default function QueryModal({ isOpen, onClose, onSubmitted, initialServic
                   {LEGAL_SERVICES.map(svc => (
                     <option key={svc.id} value={svc.title}>{svc.title}</option>
                   ))}
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
@@ -254,6 +269,7 @@ export default function QueryModal({ isOpen, onClose, onSubmitted, initialServic
                   <option value="NCDRC / Consumer Commission">NCDRC (National Consumer Commission)</option>
                   <option value="District & Sessions Courts (Delhi NCR / Kanpur)">District & Sessions Courts (Delhi NCR / Kanpur)</option>
                   <option value="UP Revenue Court / Board">UP Revenue Court / Board of Revenue</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
             </div>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Shield } from 'lucide-react';
 import { FIRM_DETAILS } from '../data/legalData';
+import { lockBodyScroll, unlockBodyScroll } from '../utils/scrollLock';
 
 const CHAPTERS = [
   { id: "services", label: "SERVICES", full: "PRACTICE SERVICES" },
@@ -13,15 +14,28 @@ const CHAPTERS = [
 export default function Navbar({ onOpenQuery, onOpenBci }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      lockBodyScroll();
+    } else {
+      unlockBodyScroll();
+    }
+    return () => {
+      unlockBodyScroll();
+    };
+  }, [mobileMenuOpen]);
+
   const handleNavClick = (id) => {
     setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      // Offset for sticky navbar
-      const yOffset = -70;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    // Allow unlock to process before calculating target position
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        const yOffset = -70;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 10);
   };
 
   return (
@@ -84,7 +98,7 @@ export default function Navbar({ onOpenQuery, onOpenBci }) {
 
       {/* Full Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="sm:hidden fixed inset-x-0 top-[88px] bottom-0 bg-[#FDFCF9] z-50 overflow-y-auto px-5 py-6 space-y-5 animate-fadeIn shadow-2xl border-t border-legal-border">
+        <div className="sm:hidden fixed inset-x-0 top-[88px] h-[calc(100dvh-88px)] bg-[#FDFCF9] z-50 overflow-y-auto px-5 py-6 pb-12 space-y-5 animate-fadeIn shadow-2xl border-t border-legal-border">
           <div className="flex items-center justify-between pb-3 border-b border-legal-border">
             <div className="flex items-center space-x-2.5">
               <img src="/logo.png" alt="SLG" className="h-8 w-auto object-contain" />
