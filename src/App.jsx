@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PracticeSection from './components/PracticeSection';
 import LeadershipSection from './components/LeadershipSection';
-import BenchSection from './components/BenchSection';
 import ServicesSection from './components/ServicesSection';
 import VenturesSection from './components/VenturesSection';
 import FaqSection from './components/FaqSection';
@@ -131,9 +130,6 @@ export default function App() {
           onOpenQuery={() => handleOpenQuery('')}
           onShowNotice={showNotice} 
         />
-
-        {/* Bench & Heritage */}
-        <BenchSection />
 
         {/* The Practice */}
         <PracticeSection 

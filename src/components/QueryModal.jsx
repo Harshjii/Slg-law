@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, Send, Scale, PhoneCall, Mail, CheckCircle, ShieldCheck, Loader2 } from 'lucide-react';
-import { FIRM_DETAILS } from '../data/legalData';
+import { FIRM_DETAILS, LEGAL_SERVICES } from '../data/legalData';
 import { sendLegalQuery, ADVOCATE_EMAIL } from '../services/mailService';
 
 export default function QueryModal({ isOpen, onClose, onSubmitted, initialService = '' }) {
@@ -230,16 +230,9 @@ export default function QueryModal({ isOpen, onClose, onSubmitted, initialServic
                   className="w-full bg-white border border-legal-border px-3.5 py-2.5 text-xs text-legal-dark focus:outline-none focus:border-legal-accent transition-colors font-sans cursor-pointer font-medium"
                 >
                   <option value="">General Chambers Inquiry</option>
-                  <option value="01. Litigation & Dispute Resolution">01. Litigation & Dispute Resolution</option>
-                  <option value="02. Corporate & Commercial Law">02. Corporate & Commercial Law</option>
-                  <option value="03. Banking, Finance & Insolvency">03. Banking, Finance & Insolvency</option>
-                  <option value="04. Real Estate & Infrastructure">04. Real Estate & Infrastructure</option>
-                  <option value="05. Regulatory, Compliance & Investigations">05. Regulatory, Compliance & Investigations</option>
-                  <option value="06. Intellectual Property, Technology & Data Protection">06. Intellectual Property, Technology & Data Protection</option>
-                  <option value="07. International & Cross-Border Legal Services">07. International & Cross-Border Legal Services</option>
-                  <option value="08. Employment & Labour Law">08. Employment & Labour Law</option>
-                  <option value="09. Family, Succession & Private Client">09. Family, Succession & Private Client</option>
-                  <option value="10. Insurance, Tax & Consumer Law">10. Insurance, Tax & Consumer Law</option>
+                  {LEGAL_SERVICES.map(svc => (
+                    <option key={svc.id} value={svc.title}>{svc.title}</option>
+                  ))}
                 </select>
               </div>
 

@@ -216,18 +216,6 @@ export const VENTURES = [
     linkText: "instagram.com/law.nest",
     href: "https://www.instagram.com/invites/contact/?utm_content=s4h1oyg&dlrf=ftbvsg1lvwqr",
     actionLabel: "Knowledge Instagram"
-  },
-  {
-    id: "msme-registered",
-    badge: "GOVERNMENT RECOGNITION",
-    badgeColor: "bg-emerald-50 text-emerald-800 border-emerald-200",
-    icon: "✓",
-    title: "MSME Registered",
-    subtitle: "Ministry of MSME, Govt. of India",
-    description: "The firm is formally certified as an MSME registered enterprise under the statutory regulations of the Government of India, ensuring formalized governance, transparent billing practices, and institutional compliance.",
-    linkText: "UDYAM: UP-20-0098412",
-    href: "#",
-    actionLabel: "Statutory Compliance"
   }
 ];
 
@@ -249,11 +237,6 @@ export const FAQ_ITEMS = [
   },
   {
     id: "faq4",
-    question: "What is the significance of the firm's MSME registration?",
-    answer: "Our Ministry of MSME registration (Udyam: UP-20-0098412) guarantees transparent professional fee structures, structured billing invoices, and formalized institutional accountability in accordance with government enterprise standards."
-  },
-  {
-    id: "faq5",
     question: "Does Statewide Litigation Group handle urgent stay applications or caveat filings?",
     answer: "Yes, the chambers maintain an active filing roster for urgent mentioning before the Supreme Court Vacation/Regular benches and High Courts for caveat lodgement, ad-interim ex-parte stays, and statutory bail applications."
   }

@@ -5,7 +5,6 @@ import { FIRM_DETAILS } from '../data/legalData';
 const CHAPTERS = [
   { id: "services", label: "SERVICES", full: "PRACTICE SERVICES" },
   { id: "leadership", label: "LEADERSHIP", full: "LEADERSHIP" },
-  { id: "bench", label: "BENCH", full: "BENCH & HERITAGE" },
   { id: "practice", label: "THE PRACTICE", full: "THE PRACTICE" },
   { id: "ventures", label: "VENTURES", full: "ALLIANCES & VENTURES" },
   { id: "questions", label: "QUESTIONS", full: "FREQUENT QUESTIONS" }

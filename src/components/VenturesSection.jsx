@@ -22,12 +22,12 @@ export default function VenturesSection({ onShowNotice }) {
           </h3>
         </div>
         <p className="text-xs sm:text-sm text-zinc-600 max-w-md font-sans leading-relaxed">
-          Chambers engagement with public civic initiatives, daily digital jurisprudence resources, and statutory certification.
+          Chambers engagement with public civic initiatives and daily digital jurisprudence resources.
         </p>
       </div>
 
-      {/* Ventures 3 Column Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+      {/* Ventures 2 Column Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {VENTURES.map(venture => {
           const isExternal = venture.href.startsWith('http');
           const Component = isExternal ? 'a' : 'div';

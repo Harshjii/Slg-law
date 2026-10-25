@@ -26,11 +26,7 @@ export default function Footer({ onOpenBci, onOpenQuery, onScrollTo, onShowNotic
           <p className="text-xs text-zinc-600 leading-relaxed max-w-sm font-sans">
             Light editorial jurisprudence. 10+ advocates across Pan-India correspondent networks. Committed to merit-based litigation and strict professional ethics.
           </p>
-          <div>
-            <span className="inline-block mono-tag text-[10px] bg-white border border-legal-accent/50 px-3 py-1 font-semibold text-legal-dark shadow-xs">
-              MSME UDYAM REGISTERED PRACTICE // {FIRM_DETAILS.udyamReg}
-            </span>
-          </div>
+
         </div>
 
         {/* Col 2: Courts & Forum */}
