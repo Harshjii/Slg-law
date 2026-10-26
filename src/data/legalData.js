@@ -3,7 +3,6 @@ export const FIRM_DETAILS = {
   shortName: "SLG",
   tagline: "Chambers & Advocates",
   motto: "Trial-tested standing. Appellate rigor before India's highest benches.",
-  udyamReg: "UP-20-0098412",
   phone: "+91 98110 00000",
   email: "advocate@statewidelitigation.com",
   helpline: "advocate@statewidelitigation.com",
@@ -83,7 +82,7 @@ export const JURISDICTION_NODES = {
     x: 130,
     y: 240,
     benches: "Gurgaon District & Sessions Court, Cyber City Commercial Arbitration Forums, Consumer Disputes Redressal Forum.",
-    tribunals: "MSME facilitation councils, state commercial tax tribunals, district consumer forums.",
+    tribunals: "Commercial dispute & arbitration councils, state commercial tax tribunals, district consumer forums.",
     oversight: "Coordinated by senior NCR litigation associates under direct partner supervision."
   },
   faridabad: {

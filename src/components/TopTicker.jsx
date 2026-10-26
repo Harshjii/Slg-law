@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, ShieldAlert, Award } from 'lucide-react';
+import { Clock, ShieldAlert } from 'lucide-react';
 import { FIRM_DETAILS } from '../data/legalData';
 
 export default function TopTicker({ onOpenBci, onShowNotice }) {
@@ -48,15 +48,6 @@ export default function TopTicker({ onOpenBci, onShowNotice }) {
           <Clock className="w-3 h-3 text-legal-accent" />
           <span>{timeStr || 'NEW DELHI --:--:-- IST'}</span>
         </span>
-        <span>•</span>
-        <button
-          type="button"
-          onClick={() => onShowNotice("MSME Registration Certificate", `Statewide Litigation Group is registered under Ministry of MSME, Govt. of India (Udyam: ${FIRM_DETAILS.udyamReg}).`)}
-          className="text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 cursor-pointer transition-colors"
-        >
-          <Award className="w-3 h-3" />
-          <span>MSME UDYAM REG.</span>
-        </button>
         <span>•</span>
         <button
           type="button"
