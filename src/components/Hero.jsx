@@ -17,7 +17,7 @@ export default function Hero({ onScrollTo, onOpenQuery }) {
       {/* Quick Summary & Responsive Actions */}
       <div className="pt-4 sm:pt-6 flex flex-col md:flex-row md:items-center justify-between gap-4 border-t border-legal-border">
         <p className="text-xs sm:text-sm text-zinc-600 max-w-xl font-sans leading-relaxed">
-          Chambers founded in 1983 bridging four decades of original trial court jurisdiction with strategic appellate representation across the Supreme Court of India, Delhi High Court, and specialized tribunals.
+          Chambers bridging four decades of original trial court jurisdiction with strategic appellate representation across the Supreme Court of India, Delhi High Court, and specialized tribunals.
         </p>
 
         <div className="shrink-0 pt-1 md:pt-0">

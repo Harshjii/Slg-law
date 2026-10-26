@@ -214,7 +214,7 @@ export default function MapLocatorSection({ onOpenQuery, onShowNotice }) {
                 />
                 <circle cx="460" cy="350" r="5" fill="#C5A059" />
                 <text x="390" y="385" className="mono-tag" fontSize="11" fill="#0B1B3D" fontWeight="bold">KANPUR SEAT</text>
-                <text x="390" y="400" className="mono-tag" fontSize="9" fill="#C5A059" fontWeight="600">CIVIL & REVENUE (ESTD. 1983)</text>
+                <text x="390" y="400" className="mono-tag" fontSize="9" fill="#C5A059" fontWeight="600">CIVIL & REVENUE</text>
               </g>
             </svg>
           </div>

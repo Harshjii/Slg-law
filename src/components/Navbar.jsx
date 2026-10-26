@@ -5,6 +5,7 @@ import { lockBodyScroll, unlockBodyScroll } from '../utils/scrollLock';
 
 const CHAPTERS = [
   { id: "services", label: "SERVICES", full: "PRACTICE SERVICES" },
+  { id: "desks", label: "STANDING DESKS", full: "REGIONAL STANDING DESKS" },
   { id: "leadership", label: "LEADERSHIP", full: "LEADERSHIP" },
   { id: "practice", label: "THE PRACTICE", full: "THE PRACTICE" },
   { id: "ventures", label: "VENTURES", full: "ALLIANCES & VENTURES" },
@@ -59,7 +60,7 @@ export default function Navbar({ onOpenQuery, onOpenBci }) {
               Statewide Litigation Group
             </h1>
             <p className="mono-tag text-[8px] sm:text-[10px] text-legal-accent tracking-wider font-semibold truncate">
-              CHAMBERS & ADVOCATES // ESTD. 1983
+              CHAMBERS & ADVOCATES
             </p>
           </div>
         </a>
@@ -106,9 +107,6 @@ export default function Navbar({ onOpenQuery, onOpenBci }) {
                 CHAMBERS DIRECTORY
               </span>
             </div>
-            <span className="mono-tag text-[10px] bg-gold-100 text-legal-dark px-2 py-0.5 border border-legal-accent/40 font-semibold">
-              ESTD. 1983
-            </span>
           </div>
 
           {/* Chapters Links */}

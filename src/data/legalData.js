@@ -1,9 +1,8 @@
 export const FIRM_DETAILS = {
   name: "Statewide Litigation Group",
   shortName: "SLG",
-  tagline: "Chambers & Advocates // Estd. 1983",
+  tagline: "Chambers & Advocates",
   motto: "Trial-tested standing. Appellate rigor before India's highest benches.",
-  established: 1983,
   udyamReg: "UP-20-0098412",
   phone: "+91 98110 00000",
   email: "advocate@statewidelitigation.com",
@@ -42,7 +41,7 @@ export const PARTNERS = [
 export const BENCH_METRICS = [
   {
     num: "01",
-    tag: "ESTABLISHED 1983",
+    tag: "TRIAL HERITAGE",
     title: "40+ Years Heritage",
     description: "Continuous trial court authority in civil suits, land title disputes, and revenue appeals anchored at Kanpur chambers."
   },
@@ -130,7 +129,7 @@ export const JURISDICTION_NODES = {
     key: "kanpur",
     name: "Kanpur Seat",
     code: "LOCATOR // UP-KANPUR-06",
-    badge: "CIVIL & REVENUE (ESTD. 1983)",
+    badge: "CIVIL & REVENUE",
     title: "Kanpur Principal Seat",
     subtitle: "DISTRICT SESSIONS, HIGH COURT BENCH LIAISON & REVENUE BOARD",
     x: 460,
@@ -322,6 +321,93 @@ export const LEGAL_SERVICES = [
     image: "/services/10-tax.jpg",
     description: "Insurance coverage and claim disputes, insurance recovery, direct and indirect tax litigation, GST disputes, consumer complaints and product liability.",
     practiceAreas: ["Insurance Coverage & Claims", "Insurance Recovery Litigation", "Direct & Indirect Tax Litigation", "GST Disputes", "Consumer Commission Claims", "Product Liability"]
+  }
+];
+
+export const REGIONAL_STANDING_DESKS = [
+  {
+    id: "delhi-ncr",
+    badge: "APEX STANDING",
+    image: "/desks/delhi.jpg",
+    title: "DELHI-NCR CHAMBERS",
+    subtitle: "New Delhi • Noida Secretariat",
+    tags: [
+      "Supreme Court of India",
+      "Delhi High Court",
+      "NCLT Principal"
+    ],
+    details: [
+      {
+        label: "Chamber Registry",
+        value: "Patiala House Courts Complex, New Delhi"
+      },
+      {
+        label: "Central Consultation",
+        value: "Sector 45, Noida, Uttar Pradesh"
+      },
+      {
+        label: "Lead Oversight",
+        value: "Appellate briefings, SLP drafting & corporate arbitrations"
+      }
+    ],
+    cta: "DIRECT DELHI DESK FILING",
+    forumValue: "Supreme Court of India"
+  },
+  {
+    id: "prayagraj",
+    badge: "PRINCIPAL HIGH COURT",
+    image: "/desks/prayagraj.jpg",
+    title: "PRAYAGRAJ CHAMBER",
+    subtitle: "High Court of Judicature at Allahabad",
+    tags: [
+      "Writ C & Writ A",
+      "First & Second Appeals",
+      "High Court Benches"
+    ],
+    details: [
+      {
+        label: "High Court Desk",
+        value: "Dedicated Allahabad High Court registry clearance unit"
+      },
+      {
+        label: "Appellate Capacity",
+        value: "Regular civil & criminal writ rosters, special appeal division benches"
+      },
+      {
+        label: "Registry Coordination",
+        value: "Immediate listing mentions and certified stamp reporting"
+      }
+    ],
+    cta: "DIRECT PRAYAGRAJ DESK FILING",
+    forumValue: "Allahabad High Court & Lucknow Bench"
+  },
+  {
+    id: "kanpur",
+    badge: "INDUSTRIAL HUB",
+    image: "/desks/kanpur.jpg",
+    title: "KANPUR COMMERCIAL DESK",
+    subtitle: "District & Commercial Courts Complex",
+    tags: [
+      "Commercial Suits",
+      "Sec 138 NI Act",
+      "Execution Petitions"
+    ],
+    details: [
+      {
+        label: "Court Registry",
+        value: "Civil Court Complex, Kanpur Nagar"
+      },
+      {
+        label: "Practice Emphasis",
+        value: "High-volume recovery proceedings, commercial contract suits, debtor asset tracing"
+      },
+      {
+        label: "Trial Capacity",
+        value: "Complete evidence examination & trial advocacy"
+      }
+    ],
+    cta: "DIRECT KANPUR DESK FILING",
+    forumValue: "District & Sessions Courts (Delhi NCR / Kanpur)"
   }
 ];
 

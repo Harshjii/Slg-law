@@ -69,7 +69,7 @@ export default function BciModal({ isOpen, onClose }) {
         {/* Footer Actions */}
         <div className="flex flex-col sm:flex-row justify-between items-center pt-2 gap-4">
           <p className="mono-tag text-[11px] text-zinc-500 text-center sm:text-left">
-            Advocates Act, 1961 • Registered Chambers (Estd. 1983)
+            Advocates Act, 1961 • Registered Chambers
           </p>
           <button 
             type="button"

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import TopTicker from './components/TopTicker';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import PracticeSection from './components/PracticeSection';
 import LeadershipSection from './components/LeadershipSection';
 import ServicesSection from './components/ServicesSection';
+import RegionalDesksSection from './components/RegionalDesksSection';
 import VenturesSection from './components/VenturesSection';
 import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
@@ -113,16 +113,15 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-6 sm:py-12 md:py-20 space-y-14 sm:space-y-24 md:space-y-36 flex-grow">
-        {/* Hero Headline */}
-        <Hero 
-          onScrollTo={handleScrollTo} 
-          onOpenQuery={() => handleOpenQuery('')} 
-        />
-
         {/* Services & Direct Inquiry */}
         <ServicesSection 
           onOpenQuery={handleOpenQuery} 
           onShowNotice={showNotice}
+        />
+
+        {/* Regional Standing Desks */}
+        <RegionalDesksSection 
+          onOpenQuery={handleOpenQuery}
         />
 
         {/* Leadership */}
