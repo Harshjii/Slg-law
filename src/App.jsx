@@ -1,27 +1,64 @@
 import React, { useState, useEffect } from 'react';
 import TopTicker from './components/TopTicker';
 import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import PracticesBanner from './components/PracticesBanner';
+import PeopleBanner from './components/PeopleBanner';
+import DesksBanner from './components/DesksBanner';
 import PracticeSection from './components/PracticeSection';
 import LeadershipSection from './components/LeadershipSection';
-import ServicesSection from './components/ServicesSection';
-import RegionalDesksSection from './components/RegionalDesksSection';
 import VenturesSection from './components/VenturesSection';
 import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
 import BciModal from './components/BciModal';
 import QueryModal from './components/QueryModal';
 import NoticeModal from './components/NoticeModal';
+import PracticePage from './components/PracticePage';
+import DesksPage from './components/DesksPage';
+import PeoplePage from './components/PeoplePage';
 
 export default function App() {
   const [bciOpen, setBciOpen] = useState(true);
   const [queryOpen, setQueryOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('');
+  const [activePage, setActivePage] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (['practice', 'people', 'desks'].includes(hash)) {
+        return hash;
+      }
+    }
+    return 'home';
+  });
+
   const [notice, setNotice] = useState({
     isOpen: false,
     title: '',
     message: '',
     type: 'info'
   });
+
+  // Sync hash routing with browser history
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (['practice', 'people', 'desks'].includes(hash)) {
+        setActivePage(hash);
+      } else {
+        setActivePage('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const handleNavigate = (page) => {
+    setActivePage(page);
+    window.location.hash = page === 'home' ? '' : `#${page}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleOpenQuery = (service = '') => {
     setSelectedService(service);
@@ -45,10 +82,21 @@ export default function App() {
     setBciOpen(true);
   };
 
-  const handleScrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+  const handleScrollToManagingDirector = () => {
+    if (activePage !== 'home') {
+      setActivePage('home');
+      window.location.hash = '';
+      setTimeout(() => {
+        const el = document.getElementById('leadership');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    } else {
+      const el = document.getElementById('leadership');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -66,7 +114,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-[100dvh] w-full overflow-x-hidden bg-[#FDFCF9] text-[#0B1B3D] flex flex-col font-sans selection:bg-[#C5A059] selection:text-white">
+    <div className="min-h-[100dvh] w-full overflow-x-hidden bg-[#060E1D] text-[#F8F6F0] flex flex-col font-sans selection:bg-[#C5A059] selection:text-[#060E1D]">
       {/* Statutory BCI Entry Modal */}
       <BciModal 
         isOpen={bciOpen} 
@@ -105,52 +153,92 @@ export default function App() {
         onShowNotice={showNotice}
       />
 
-      {/* Sticky Main Navigation */}
+      {/* Sticky Main Navigation with (Practice, People, Regional Standing Desks, Contact Us) */}
       <Navbar 
+        activePage={activePage}
+        onNavigate={handleNavigate}
         onOpenQuery={() => handleOpenQuery('')} 
         onOpenBci={handleOpenBci} 
       />
 
-      {/* Main Content Sections */}
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-6 sm:py-12 md:py-20 space-y-14 sm:space-y-24 md:space-y-36 flex-grow">
-        {/* Services & Direct Inquiry */}
-        <ServicesSection 
-          onOpenQuery={handleOpenQuery} 
-          onShowNotice={showNotice}
-        />
+      {/* Main Content Sections / Routed Page Views */}
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-6 sm:py-12 md:py-16 space-y-16 sm:space-y-24 md:space-y-32 flex-grow">
+        
+        {/* VIEW 1: DEDICATED PRACTICE SERVICES PAGE */}
+        {activePage === 'practice' && (
+          <PracticePage 
+            onBackToHome={() => handleNavigate('home')} 
+            onOpenQuery={handleOpenQuery}
+            onShowNotice={showNotice}
+          />
+        )}
 
-        {/* Regional Standing Desks */}
-        <RegionalDesksSection 
-          onOpenQuery={handleOpenQuery}
-        />
+        {/* VIEW 2: DEDICATED REGIONAL STANDING DESKS PAGE */}
+        {activePage === 'desks' && (
+          <DesksPage 
+            onBackToHome={() => handleNavigate('home')} 
+            onOpenQuery={handleOpenQuery}
+            onShowNotice={showNotice}
+          />
+        )}
 
-        {/* Leadership */}
-        <LeadershipSection 
-          onOpenQuery={() => handleOpenQuery('')}
-          onShowNotice={showNotice} 
-        />
+        {/* VIEW 3: DEDICATED PEOPLE & LEADERSHIP PAGE */}
+        {activePage === 'people' && (
+          <PeoplePage 
+            onBackToHome={() => handleNavigate('home')} 
+            onOpenQuery={handleOpenQuery}
+            onShowNotice={showNotice}
+          />
+        )}
 
-        {/* The Practice */}
-        <PracticeSection 
-          onShowNotice={showNotice} 
-        />
+        {/* VIEW 4: HOME SCREEN (Hero, Overview, Managing Director, Practice, Desks, FAQ) */}
+        {activePage === 'home' && (
+          <>
+            {/* Trilegal Style Immersive Hero Section */}
+            <Hero 
+              onScrollToManagingDirector={handleScrollToManagingDirector}
+              onExplorePractice={() => handleNavigate('practice')}
+            />
 
-        {/* Ventures & Alliances */}
-        <VenturesSection 
-          onShowNotice={showNotice} 
-        />
+            {/* The Practice Jurisprudence (Full disclosure. We evaluate merit before representation.) */}
+            <PracticeSection className="pt-2 sm:pt-4 border-t-0" />
 
-        {/* Questions (FAQ) */}
-        <FaqSection 
-          onOpenQuery={() => handleOpenQuery('')} 
-        />
+            {/* Trilegal Style Showcase Banner: PRACTICES */}
+            <PracticesBanner onNavigate={handleNavigate} />
+
+            {/* Trilegal Style Showcase Banner: PEOPLE */}
+            <PeopleBanner onNavigate={handleNavigate} />
+
+            {/* Trilegal Style Showcase Banner: REGIONAL STANDING DESKS */}
+            <DesksBanner onNavigate={handleNavigate} />
+
+            {/* Note from Managing Director (Anchor target for Hero button) */}
+            <div id="leadership" className="scroll-mt-28">
+              <LeadershipSection 
+                onOpenQuery={() => handleOpenQuery('')}
+                onShowNotice={showNotice} 
+              />
+            </div>
+
+            {/* Ventures & Alliances (Institutional Ecosystem including Lok Adalat) */}
+            <VenturesSection 
+              onShowNotice={showNotice} 
+              onOpenQuery={handleOpenQuery}
+            />
+
+            {/* Questions (FAQ) */}
+            <FaqSection 
+              onOpenQuery={() => handleOpenQuery('')} 
+            />
+          </>
+        )}
       </main>
 
-      {/* Footer */}
+      {/* Global Footer */}
       <Footer 
         onOpenBci={handleOpenBci}
         onOpenQuery={() => handleOpenQuery('')} 
-        onScrollTo={handleScrollTo}
+        onNavigate={handleNavigate}
         onShowNotice={showNotice}
       />
     </div>

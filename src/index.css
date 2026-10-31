@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
@@ -16,8 +16,8 @@ body {
   min-height: 100dvh;
   margin: 0;
   padding: 0;
-  background-color: #fcfbf9;
-  color: #141413;
+  background-color: #060E1D;
+  color: #F8F6F0;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -32,23 +32,23 @@ body {
   letter-spacing: 0.04em;
 }
 
-/* Custom editorial scrollbar */
+/* Custom dark executive scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f7f5f0;
+  background: #060E1D;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #dcd6cb;
+  background: #1B3564;
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8c7853;
+  background: #C5A059;
 }
 
 /* Smooth transitions */

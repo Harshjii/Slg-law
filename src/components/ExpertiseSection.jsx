@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Scale, Search } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { PRACTICE_AREAS } from '../data/legalData';
 
 export default function ExpertiseSection({ onOpenQuery }) {

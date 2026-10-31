@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, Bell, CheckCircle2, Info } from 'lucide-react';
+import { X, Bell, CheckCircle2 } from 'lucide-react';
 import { lockBodyScroll, unlockBodyScroll } from '../utils/scrollLock';
 
 export default function NoticeModal({ isOpen, onClose, title = "SLG Chambers Notification", message, type = "info" }) {
@@ -18,16 +18,16 @@ export default function NoticeModal({ isOpen, onClose, title = "SLG Chambers Not
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-all animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-md p-4 transition-all animate-fadeIn"
       role="dialog"
       aria-modal="true"
     >
-      <div className="bg-white border border-legal-border max-w-md w-full p-6 sm:p-7 shadow-2xl space-y-4">
+      <div className="bg-[#0B1B3D] border border-legal-accent/60 max-w-md w-full p-6 sm:p-7 shadow-2xl space-y-4 rounded-xs">
         {/* Header */}
-        <div className="flex justify-between items-center border-b border-legal-border pb-3">
+        <div className="flex justify-between items-center border-b border-[#1B3564] pb-3">
           <div className="flex items-center space-x-2">
             {type === 'success' ? (
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
             ) : (
               <Bell className="w-4 h-4 text-legal-accent" />
             )}
@@ -38,7 +38,7 @@ export default function NoticeModal({ isOpen, onClose, title = "SLG Chambers Not
           <button 
             type="button"
             onClick={onClose} 
-            className="text-zinc-400 hover:text-legal-dark p-1 transition-colors cursor-pointer"
+            className="text-slate-400 hover:text-white p-1 transition-colors cursor-pointer"
             aria-label="Close notification"
           >
             <X className="w-5 h-5" />
@@ -46,16 +46,16 @@ export default function NoticeModal({ isOpen, onClose, title = "SLG Chambers Not
         </div>
 
         {/* Message body */}
-        <p className="text-sm text-zinc-700 font-sans leading-relaxed pt-1">
+        <p className="text-sm text-slate-300 font-sans leading-relaxed pt-1">
           {message}
         </p>
 
         {/* Action */}
-        <div className="flex justify-end pt-3 border-t border-legal-border">
+        <div className="flex justify-end pt-3 border-t border-[#1B3564]">
           <button 
             type="button"
             onClick={onClose} 
-            className="bg-legal-dark text-cream-50 mono-tag text-xs px-5 py-2.5 hover:bg-zinc-800 transition-colors border border-legal-accent active:scale-95 cursor-pointer"
+            className="bg-legal-accent hover:bg-gold-400 text-navy-950 font-bold mono-tag text-xs px-5 py-2.5 transition-colors border border-gold-300 active:scale-95 cursor-pointer shadow-md"
           >
             ACKNOWLEDGE
           </button>

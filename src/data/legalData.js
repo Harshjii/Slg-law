@@ -12,28 +12,72 @@ export const FIRM_DETAILS = {
 
 export const PARTNERS = [
   {
-    id: "sudesh-kumar-singh",
-    name: "Sudesh Kumar Singh",
-    role: "MANAGING PARTNER",
-    subRole: "Appellate, Constitutional & Corporate Counsel",
-    designation: "Managing Partner • Supreme Court & Delhi High Court",
-    experience: "Leading Institutional & High Stakes Litigation",
-    bio: "Leads the institutional litigation and appellate dispute resolution practice of Statewide Litigation Group. Regularly briefs and argues before the Supreme Court of India (Special Leave Petitions & Writs), High Courts (Article 226/227 writ petitions), and commercial benches. Specializes in Company Law disputes before the National Company Law Tribunal (NCLT/NCLAT) under the supervision of senior legal precedents.",
-    tags: ["Article 32 & 136 SLP", "High Court Writs", "NCLT & NCLAT", "Commercial Benches"],
-    linkedIn: "https://www.linkedin.com",
-    seat: "Delhi NCR Chambers & Supreme Court"
-  },
-  {
     id: "hari-singh-gautam",
     name: "Shri Hari Singh Gautam",
     role: "SENIOR PARTNER",
     subRole: "Civil, Revenue & Trial Court Doyen",
-    designation: "Senior Partner • Practicing Since 1983 (40+ Years)",
-    experience: "40+ Years Trial Court & Revenue Mastery",
-    bio: "Practicing actively at the bar since 1983, Shri Hari Singh Gautam commands over four decades of profound trial court experience. Anchored at Kanpur, his practice is recognized for original civil suits, title declarations, permanent injunctions, UP Revenue Code trials, agricultural and tenancy disputes, and complex trial court cross-examinations across District & Sessions Courts.",
-    tags: ["Original Civil Suits", "UP Revenue Code", "Title & Injunctions", "Cross-Examination Doyen"],
-    linkedIn: "https://www.linkedin.com",
-    seat: "Kanpur Principal Chambers"
+    enrolment: "1983 (43+ Years Standing)",
+    experience: "43+ years of trial experience in the Kanpur District Court",
+    areasOfFocus: "Civil and land disputes; original suits, land laws, mutation and acquisition disputes",
+    designation: "Senior Partner • Practicing Since 1983",
+    bio: "43+ years of trial experience in the Kanpur District Court. Areas of focus: Civil and land disputes; original suits, land laws, mutation and acquisition disputes.",
+    tags: ["Original Suits", "Land Laws", "Mutation & Acquisition", "43+ Yrs Trial Doyen"],
+    seat: "Kanpur Principal Civil Chambers"
+  },
+  {
+    id: "sudesh-kumar-singh",
+    name: "Sudesh Kumar Singh",
+    role: "MANAGING PARTNER",
+    subRole: "Appellate, Constitutional & Corporate Counsel",
+    designation: "Managing Partner • Supreme Court Bar Association (SCBA)",
+    experience: "10+ years of exposure in litigation, statutory compliance and corporate advisory",
+    enrolment: "Bar Council of Uttar Pradesh, 2016; Advocate-on-Roll, High Court of Judicature at Allahabad, 2017",
+    education: "B.A. LL.B. (Hons.), Lloyd Law College, Greater Noida (2011–2016)",
+    standing: "Member, Supreme Court Bar Association (SCBA)",
+    credentials: "POSH certified; Diploma in Media Law; Cyber Law Certification / Diploma in Cyber Law; IPR Certification",
+    engagements: "Retainer Advocate for Powerstik; Counsel for ATS Builders (ATS Group of Companies, External Counsel)",
+    bio: "Advocate and legal consultant advising corporate clients on litigation and regulatory matters. 10+ years of exposure in litigation, statutory compliance and corporate advisory.",
+    tags: ["Supreme Court Bar (SCBA)", "Allahabad High Court", "Corporate & Litigation", "POSH & Cyber Law"],
+    seat: "Delhi NCR Chambers & Supreme Court"
+  }
+];
+
+export const TEAM_MEMBERS = [
+  {
+    id: "mohit-singh",
+    name: "Mohit Singh",
+    role: "SENIOR CONSULTANT",
+    description: "7 years of experience in corporate legal affairs, contract management, legal advisory and dispute resolution. Additionally engaged in providing legal research, contract review, documentation and advisory support. NLU Assam graduate (2019) with expertise in RERA, consumer litigation and NCLT, focusing on drafting and legal research."
+  },
+  {
+    id: "achintya-tiwari",
+    name: "Achintya Tiwari",
+    role: "ADVOCATE-ON-RECORD, SUPREME COURT OF INDIA",
+    description: "Advocate-on-Record (AOR) at the Supreme Court of India."
+  },
+  {
+    id: "ramesh-kumar-jha",
+    name: "Ramesh Kumar Jha",
+    role: "ASSOCIATE",
+    description: "Specialises in cheque dishonour and recovery suits at the Gurugram District Courts; known for client-focused case management."
+  },
+  {
+    id: "vineet-yadav",
+    name: "Vineet Yadav",
+    role: "ASSOCIATE",
+    description: "Six years in financial litigation and recovery, with a strong court presence in Delhi-NCR."
+  },
+  {
+    id: "vibha-singh",
+    name: "Vibha Singh",
+    role: "ASSOCIATE",
+    description: "MBA background; specialises in land and revenue matters, bringing analytical skills to dispute resolution and documentation."
+  },
+  {
+    id: "ishan-agrawal",
+    name: "Ishan Agrawal",
+    role: "ASSOCIATE",
+    description: "Associate member of the firm's litigation team."
   }
 ];
 
@@ -214,6 +258,18 @@ export const VENTURES = [
     linkText: "instagram.com/law.nest",
     href: "https://www.instagram.com/invites/contact/?utm_content=s4h1oyg&dlrf=ftbvsg1lvwqr",
     actionLabel: "Knowledge Instagram"
+  },
+  {
+    id: "lok-adalat",
+    badge: "ALTERNATIVE DISPUTE RESOLUTION",
+    badgeColor: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    icon: "🤝",
+    title: "Lok Adalat",
+    subtitle: "Save time, reduce litigation costs, and take a step towards a faster resolution.",
+    description: "Resolve your disputes quickly, affordably, and amicably through Lok Adalat. We assist individuals and businesses in understanding the Lok Adalat process, preparing necessary documentation, and seeking mutually acceptable settlements through an accessible and legally recognised dispute resolution mechanism.",
+    linkText: "Consult Lok Adalat Facilitation Desk",
+    href: "#lok-adalat",
+    actionLabel: "Lok Adalat Desk"
   }
 ];
 
