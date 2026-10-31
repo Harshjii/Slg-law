@@ -1,9 +1,8 @@
 import React from 'react';
 import { ArrowLeft, ArrowRight, Compass } from 'lucide-react';
 import RegionalDesksSection from './RegionalDesksSection';
-import MapLocatorSection from './MapLocatorSection';
 
-export default function DesksPage({ onBackToHome, onOpenQuery, onShowNotice }) {
+export default function DesksPage({ onBackToHome, onOpenQuery }) {
   return (
     <div className="space-y-12 sm:space-y-16 animate-fadeIn">
       {/* Top Breadcrumb & Page Header */}
@@ -41,9 +40,6 @@ export default function DesksPage({ onBackToHome, onOpenQuery, onShowNotice }) {
 
       {/* Main Desks Grid */}
       <RegionalDesksSection onOpenQuery={onOpenQuery} showHeader={false} />
-
-      {/* Interactive Court Matrix Schematic Map */}
-      <MapLocatorSection onOpenQuery={onOpenQuery} onShowNotice={onShowNotice} />
 
       {/* Bottom Dispatch Brief CTA */}
       <div className="bg-[#0B1B3D] border border-legal-accent/60 p-6 sm:p-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 rounded-xs shadow-xl">
