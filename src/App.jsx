@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import TopTicker from './components/TopTicker';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PracticesBanner from './components/PracticesBanner';
@@ -145,12 +144,6 @@ export default function App() {
         message={notice.message}
         type={notice.type}
         onClose={closeNotice}
-      />
-
-      {/* Realtime IST Clock & Status Top Bar */}
-      <TopTicker 
-        onOpenBci={handleOpenBci} 
-        onShowNotice={showNotice}
       />
 
       {/* Sticky Main Navigation with (Practice, People, Regional Standing Desks, Contact Us) */}
