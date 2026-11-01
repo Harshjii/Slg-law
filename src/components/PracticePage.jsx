@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
 import { LEGAL_SERVICES } from '../data/legalData';
 
+const PRACTICE_MARQUEE = [
+  "LITIGATION & DISPUTE RESOLUTION",
+  "SUPREME COURT APPEALS (SLP ART. 136)",
+  "HIGH COURT WRITS (ART. 226/227)",
+  "CORPORATE & COMMERCIAL LAW",
+  "BANKING & INSOLVENCY (IBC / DRT)",
+  "REAL ESTATE & RERA DISPUTES",
+  "REGULATORY & STATUTORY COMPLIANCE",
+  "INTELLECTUAL PROPERTY & TECH LAW",
+  "INTERNATIONAL & DOMESTIC ARBITRATION",
+  "EMPLOYMENT & LABOUR LAWS",
+  "DIRECT & INDIRECT TAXATION",
+  "COMMERCIAL TRIBUNALS (NCLT / NCDRC)"
+];
+
 export default function PracticePage({ onBackToHome, onOpenQuery }) {
-  const [filterTag, setFilterTag] = useState('ALL');
-
-  // Collect all unique tags
-  const allTags = ['ALL', 'LITIGATION', 'CORPORATE', 'BANKING', 'REAL ESTATE', 'COMPLIANCE', 'TAX', 'ARBITRATION'];
-
-  const filteredServices = filterTag === 'ALL'
-    ? LEGAL_SERVICES
-    : LEGAL_SERVICES.filter(svc => 
-        svc.title.toUpperCase().includes(filterTag) || 
-        svc.practiceAreas.some(tag => tag.toUpperCase().includes(filterTag))
-      );
-
   return (
     <div className="space-y-12 sm:space-y-16 animate-fadeIn">
       {/* Top Breadcrumb & Page Header */}
@@ -43,31 +46,25 @@ export default function PracticePage({ onBackToHome, onOpenQuery }) {
           </p>
         </div>
 
-        {/* Quick Filter Bar */}
-        <div className="flex items-center space-x-2 overflow-x-auto pt-3 scrollbar-none">
-          <span className="mono-tag text-[10px] text-slate-400 uppercase tracking-wider shrink-0 mr-1">
-            FILTER:
-          </span>
-          {allTags.map(tag => (
-            <button
-              key={tag}
-              type="button"
-              onClick={() => setFilterTag(tag)}
-              className={`mono-tag text-[10px] sm:text-[11px] px-3 py-1.5 border transition-all cursor-pointer rounded-2xs shrink-0 ${
-                filterTag === tag
-                  ? 'bg-legal-accent text-navy-950 font-bold border-gold-300 shadow-sm'
-                  : 'bg-[#0B1B3D] text-slate-300 border-[#1B3564] hover:border-legal-accent'
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
+        {/* Continuous Dynamic Marquee Ticker */}
+        <div className="relative overflow-hidden w-full py-2.5 sm:py-3 bg-[#0B1B3D] border border-[#1B3564] rounded-xs shadow-inner mt-4">
+          <div className="animate-marquee flex items-center space-x-6 sm:space-x-8 whitespace-nowrap">
+            {[...PRACTICE_MARQUEE, ...PRACTICE_MARQUEE].map((item, idx) => (
+              <span key={idx} className="inline-flex items-center space-x-3 text-xs sm:text-sm mono-tag font-semibold text-slate-300">
+                <span className="w-1.5 h-1.5 rounded-full bg-legal-accent animate-pulse" />
+                <span className="text-gold-200 tracking-wider uppercase">{item}</span>
+              </span>
+            ))}
+          </div>
+          {/* Subtle gradient edges */}
+          <div className="absolute inset-y-0 left-0 w-8 sm:w-16 bg-gradient-to-r from-[#0B1B3D] to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-8 sm:w-16 bg-gradient-to-l from-[#0B1B3D] to-transparent pointer-events-none" />
         </div>
       </div>
 
       {/* Services Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-        {filteredServices.map(service => (
+        {LEGAL_SERVICES.map(service => (
           <div 
             key={service.id}
             onClick={() => onOpenQuery(service.title)}
