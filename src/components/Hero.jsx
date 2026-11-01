@@ -20,10 +20,10 @@ export default function Hero({ onScrollToManagingDirector, onExplorePractice }) 
       {/* Main Left-Aligned Headline & Managing Director Button (Trilegal Reference Style) */}
       <div className="relative z-10 max-w-4xl space-y-4 sm:space-y-6 my-auto pt-6">
         <div className="space-y-1 sm:space-y-2">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white uppercase font-sans leading-tight drop-shadow-md">
+          <h2 className="serif-title text-2xl sm:text-4xl md:text-5xl font-light sm:font-normal tracking-wide text-[#F8F6F0] uppercase leading-tight drop-shadow-md">
             WELCOME TO
           </h2>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#F8F6F0] serif-title leading-tight drop-shadow-lg">
+          <h1 className="font-sans text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white uppercase leading-tight drop-shadow-lg">
             STATEWIDE LITIGATION GROUP
           </h1>
         </div>
