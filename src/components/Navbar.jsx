@@ -55,7 +55,7 @@ export default function Navbar({ activePage = 'home', onNavigate, onOpenQuery, o
               <span className="serif-title text-base sm:text-xl font-bold tracking-tight text-[#F8F6F0] leading-tight block whitespace-nowrap group-hover:text-gold-200 transition-colors">
                 Statewide Litigation Group
               </span>
-              <span className="mono-tag text-[8px] sm:text-[10px] text-legal-accent tracking-wider font-semibold block whitespace-nowrap">
+              <span className="mono-tag text-[10px] sm:text-xs text-legal-accent tracking-wider font-semibold block whitespace-nowrap">
                 LAW FIRM
               </span>
             </div>
