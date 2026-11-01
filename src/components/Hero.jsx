@@ -17,16 +17,6 @@ export default function Hero({ onScrollToManagingDirector, onExplorePractice }) 
       <div className="absolute inset-0 bg-gradient-to-t from-[#060E1D] via-transparent to-[#030914]/80" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_#060E1D_100%)] opacity-60" />
 
-      {/* Top Tag */}
-      <div className="relative z-10 pt-4 sm:pt-6">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#060E1D]/80 border border-legal-accent/40 backdrop-blur-md rounded-2xs">
-          <span className="w-2 h-2 rounded-full bg-legal-accent animate-pulse"></span>
-          <span className="mono-tag text-[10px] sm:text-xs text-gold-300 font-semibold uppercase tracking-widest">
-            SUPREME COURT & PAN-INDIA BENCHES
-          </span>
-        </div>
-      </div>
-
       {/* Main Left-Aligned Headline & Managing Director Button (Trilegal Reference Style) */}
       <div className="relative z-10 max-w-4xl space-y-4 sm:space-y-6 my-auto pt-6">
         <div className="space-y-1 sm:space-y-2">
