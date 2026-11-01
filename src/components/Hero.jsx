@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero({ onScrollToManagingDirector, onExplorePractice }) {
   return (
-    <section className="relative w-full h-[75vh] sm:h-[82vh] min-h-[520px] max-h-[820px] overflow-hidden flex flex-col justify-between -mt-6 sm:-mt-12 md:-mt-20 -mx-4 sm:-mx-6 md:-mx-12 px-4 sm:px-8 md:px-16 pt-12 sm:pt-16 pb-6 sm:pb-8 border-b border-[#1B3564]">
+    <section className="relative w-full min-h-[460px] sm:min-h-[540px] md:h-[80vh] md:max-h-[800px] overflow-hidden flex flex-col justify-between -mt-6 sm:-mt-12 md:-mt-16 -mx-4 sm:-mx-6 md:-mx-12 px-4 sm:px-8 md:px-16 pt-3 sm:pt-6 md:pt-10 pb-4 sm:pb-6 border-b border-[#1B3564]">
       {/* Background Photograph */}
       <img
         src="/hero-bg.jpg"
@@ -18,9 +18,9 @@ export default function Hero({ onScrollToManagingDirector, onExplorePractice }) 
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_#060E1D_100%)] opacity-60" />
 
       {/* Main Left-Aligned Headline & Managing Director Button (Trilegal Reference Style) */}
-      <div className="relative z-10 max-w-4xl space-y-4 sm:space-y-6 my-auto pt-6">
-        <div className="space-y-1 sm:space-y-2">
-          <h2 className="serif-title text-2xl sm:text-4xl md:text-5xl font-light sm:font-normal tracking-wide text-[#F8F6F0] uppercase leading-tight drop-shadow-md">
+      <div className="relative z-10 max-w-4xl space-y-3 sm:space-y-5 pt-1 sm:pt-3">
+        <div className="space-y-1 sm:space-y-1.5">
+          <h2 className="serif-title text-xl sm:text-3xl md:text-4xl font-light sm:font-normal tracking-wide text-[#F8F6F0] uppercase leading-tight drop-shadow-md">
             WELCOME TO
           </h2>
           <h1 className="font-sans text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white uppercase leading-tight drop-shadow-lg">
@@ -33,7 +33,7 @@ export default function Hero({ onScrollToManagingDirector, onExplorePractice }) 
         </p>
 
         {/* Managing Director Outlined Button (Replaces About the Firm) */}
-        <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-3 sm:gap-4">
+        <div className="pt-2 sm:pt-3 flex flex-wrap items-center gap-3 sm:gap-4">
           <button
             type="button"
             onClick={onScrollToManagingDirector}
@@ -57,7 +57,7 @@ export default function Hero({ onScrollToManagingDirector, onExplorePractice }) 
       </div>
 
       {/* Center Bottom SCROLL Indicator (Trilegal Reference Style) */}
-      <div className="relative z-10 flex flex-col items-center justify-center space-y-1.5 pointer-events-none select-none pb-2 sm:pb-3">
+      <div className="relative z-10 flex flex-col items-center justify-center space-y-1.5 pointer-events-none select-none pt-4 sm:pt-6 pb-1 sm:pb-2">
         <span className="mono-tag text-[9px] sm:text-[10px] tracking-[0.28em] text-slate-400 font-bold uppercase">
           SCROLL
         </span>
