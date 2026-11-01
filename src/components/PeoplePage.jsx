@@ -143,7 +143,7 @@ export default function PeoplePage({ onBackToHome, onOpenQuery }) {
         <div className="flex items-center space-x-2">
           <span className="w-2 h-2 rounded-full bg-legal-accent"></span>
           <span className="mono-tag text-xs text-legal-accent font-bold uppercase tracking-wider">
-            ADVOCATES, SENIOR CONSULTANTS & ASSOCIATES
+            ADVOCATES, CONSULTANTS, ASSOCIATES & LEGAL TEAM
           </span>
         </div>
 

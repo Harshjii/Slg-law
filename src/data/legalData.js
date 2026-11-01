@@ -78,6 +78,18 @@ export const TEAM_MEMBERS = [
     name: "Ishan Agrawal",
     role: "ASSOCIATE",
     description: "Associate member of the firm's litigation team."
+  },
+  {
+    id: "priyanshu-saurav",
+    name: "Priyanshu Saurav",
+    role: "ASSOCIATE",
+    description: "Associate member of the firm's litigation and case management team."
+  },
+  {
+    id: "vishu-bansal",
+    name: "Vishu Bansal",
+    role: "PARALEGAL",
+    description: "Paralegal assisting in legal research, documentation, and court filings."
   }
 ];
 
