@@ -22,13 +22,7 @@ export default function DesksPage({ onBackToHome, onOpenQuery }) {
 
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="flex items-center space-x-3">
-              <span className="h-px w-8 bg-legal-accent"></span>
-              <span className="mono-tag text-xs text-legal-accent tracking-widest uppercase font-semibold">
-                PAN-INDIA JUDICIAL FOOTPRINT
-              </span>
-            </div>
-            <h1 className="serif-title text-3xl sm:text-5xl md:text-6xl font-bold text-[#F8F6F0] mt-2 leading-tight">
+            <h1 className="serif-title text-3xl sm:text-5xl md:text-6xl font-bold text-[#F8F6F0] leading-tight">
               Regional Standing Desks
             </h1>
           </div>
