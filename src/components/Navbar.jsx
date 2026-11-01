@@ -56,7 +56,7 @@ export default function Navbar({ activePage = 'home', onNavigate, onOpenQuery, o
                 Statewide Litigation Group
               </span>
               <span className="mono-tag text-[8px] sm:text-[10px] text-legal-accent tracking-wider font-semibold block whitespace-nowrap">
-                CHAMBERS & ADVOCATES
+                LAW FIRM
               </span>
             </div>
           </button>
@@ -139,7 +139,7 @@ export default function Navbar({ activePage = 'home', onNavigate, onOpenQuery, o
                   Statewide Litigation Group
                 </span>
                 <span className="mono-tag text-[9px] text-legal-accent tracking-widest font-semibold block">
-                  CHAMBERS & ADVOCATES
+                  LAW FIRM
                 </span>
               </div>
             </div>

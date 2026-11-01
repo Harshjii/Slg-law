@@ -1,7 +1,7 @@
 export const FIRM_DETAILS = {
   name: "Statewide Litigation Group",
   shortName: "SLG",
-  tagline: "Chambers & Advocates",
+  tagline: "Law Firm",
   motto: "Trial-tested standing. Appellate rigor before India's highest benches.",
   phone: "+91 98110 00000",
   email: "advocate@statewidelitigation.com",
